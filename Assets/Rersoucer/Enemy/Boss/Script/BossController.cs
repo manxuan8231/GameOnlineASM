@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -161,6 +162,7 @@ public class BossController : MonoBehaviour
     {
         if (currentState == EnemyState.Death) return;
         currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth);
         if(currentHealth < 0)
         {
             ChangeState(EnemyState.Death);

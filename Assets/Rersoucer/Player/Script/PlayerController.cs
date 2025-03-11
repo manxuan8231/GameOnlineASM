@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI ammoText;
 
     public GameObject bangDan;
+
+    public float cooldownJump = 2f;
+    private float timeJump = 0f;    
     void Start()
     {
         bangDan.SetActive(true);
@@ -92,10 +95,11 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isReloading) // Không cho nhảy khi đang nạp đạn
+        if (Input.GetKeyDown(KeyCode.Space) && !isReloading && Time.time >= timeJump + cooldownJump) // Không cho nhảy khi đang nạp đạn
         {
             _animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * moveJump, ForceMode.Impulse);
+            timeJump = Time.time;
         }
     }
 

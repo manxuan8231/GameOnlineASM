@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour
 {
     private Animator _animator;
-
+    public float moveJump = 10;
     public float walkSpeed = 5f; // Tốc độ đi bộ
     public float runSpeed = 10f; // Tốc độ chạy
     public float rotationSpeed = 10f; // Tốc độ xoay nhân vật
@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
 
     public RuntimeAnimatorController animatorDefault;
     public RuntimeAnimatorController animatorZoom;
+
+    private Rigidbody rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
 
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Firing();
         HandleZoom();
+        Jump();
     }
 
     void Move()
@@ -74,7 +78,14 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isRun", false);
         }
     }
-
+    void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _animator.SetTrigger("Jump");
+            rb.AddForce(Vector2.up * moveJump, ForceMode.Impulse);
+        }
+    }
     void Firing()
     {
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime) // Kiểm tra nếu có thể bắn

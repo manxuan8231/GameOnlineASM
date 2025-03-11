@@ -15,13 +15,18 @@ public class BossController : MonoBehaviour
     private Animator animator;
     private bool hasDancing = false;
     private bool isAttacking = false;
-    private 
+    public float rangeSkill = 5f;
+
+    public float cooldownSkill = 15f;
+    public bool canUseSkill = true;
+    public int maxHealth = 200;
+    public int currentHealth;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         currentState = EnemyState.IdleCombat;
-
+        currentHealth = maxHealth;
         GameObject playerObject = GameObject.FindGameObjectWithTag(targetTag);
         if (playerObject != null)
             player = playerObject.transform;
@@ -42,7 +47,7 @@ public class BossController : MonoBehaviour
             hasDancing = true;
             return;
         }
-
+       
         HandleState(distanceToTarget);
     }
 
@@ -62,7 +67,7 @@ public class BossController : MonoBehaviour
         animator.ResetTrigger("Combat");
         animator.ResetTrigger("IdleCombat");
         animator.ResetTrigger("Dancing");
-
+        animator.ResetTrigger("Skill");
         currentState = newState;
         animator.SetTrigger(newState.ToString());
     }
@@ -91,6 +96,10 @@ public class BossController : MonoBehaviour
                     agent.ResetPath(); // Dừng SetDestination
                     StartCoroutine(AttackRoutine());
                 }
+                else if (distanceToTarget <= rangeSkill && canUseSkill)
+                {
+                    StartCoroutine(SkillRoutie());
+                }
                 break;
 
             case EnemyState.Combat:
@@ -104,11 +113,14 @@ public class BossController : MonoBehaviour
                 break;
             case EnemyState.Skill:
                 agent.isStopped = false;
-                break;
+              
+
+                    break;
             case EnemyState.Death:
                 agent.isStopped = true;
                 Destroy(gameObject, 2f);
                 break;
+            
            
         }
     }
@@ -132,4 +144,28 @@ public class BossController : MonoBehaviour
             ChangeState(EnemyState.Walk);
         }
     }
+        IEnumerator SkillRoutie()
+    {
+        canUseSkill = true;
+        ChangeState(EnemyState.Skill);
+        yield return new WaitForSeconds(3f);
+        ChangeState(EnemyState.Walk);
+        StartCoroutine(SkillCooldownRoutine());
+    }
+    IEnumerator SkillCooldownRoutine()
+    {
+        yield return new WaitForSeconds(cooldownSkill);
+        canUseSkill = true; 
+    }
+    public void TakeDamage(int damage)
+    {
+        if (currentState == EnemyState.Death) return;
+        currentHealth -= damage;
+        if(currentHealth < 0)
+        {
+            ChangeState(EnemyState.Death);
+        }
+        
+    }
+   
 }

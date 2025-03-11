@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class BossController : MonoBehaviour
 {
-    public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death }
+    public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death,Skill }
     public EnemyState currentState;
     private Transform player;
     public float radius = 25f;
@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour
     private Animator animator;
     private bool hasDancing = false;
     private bool isAttacking = false;
-
+    private 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -102,11 +102,14 @@ public class BossController : MonoBehaviour
                     ChangeState(EnemyState.Walk);
                 }
                 break;
-
+            case EnemyState.Skill:
+                agent.isStopped = false;
+                break;
             case EnemyState.Death:
                 agent.isStopped = true;
                 Destroy(gameObject, 2f);
                 break;
+           
         }
     }
 

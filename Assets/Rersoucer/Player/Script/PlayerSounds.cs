@@ -6,6 +6,7 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip clipWalk;
     public AudioClip clipRun;
     public AudioClip clipJump;
+    public AudioClip clipReload;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -26,5 +27,9 @@ public class PlayerSounds : MonoBehaviour
     public void Jump()
     {
         audioSource.PlayOneShot(clipJump);
+    }
+    public void Reload()
+    {
+        audioSource.PlayOneShot(clipReload);
     }
 }

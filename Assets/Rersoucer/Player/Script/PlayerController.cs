@@ -1,190 +1,153 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator _animator;
     public float moveJump = 10;
-    public float walkSpeed = 5f;
-    public float runSpeed = 10f;
-    public float rotationSpeed = 10f;
+    public float walkSpeed = 5f; // Tốc độ đi bộ
+    public float runSpeed = 10f; // Tốc độ chạy
+    public float rotationSpeed = 10f; // Tốc độ xoay nhân vật
 
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public Transform targetTransform;
-    public float bulletSpeed = 20f;
-    public float fireRate = 0.2f;
+    public GameObject bulletPrefab; // Prefab của đạn
+    public Transform firePoint; // Vị trí bắn (gắn vào súng hoặc trước nhân vật)
+    public Transform targetTransform; // Transform của mục tiêu (có thể là enemy hoặc điểm chỉ định)
+    public float bulletSpeed = 20f; // Tốc độ bay của đạn
+    public float fireRate = 0.2f; // Thời gian delay giữa các lần bắn
 
-    public Transform cameraTransform;
+    public Transform cameraTransform; // Transform của Camera (gán từ Inspector)
 
-    private float nextFireTime = 0f;
-    private bool isFiring = false;
-    private bool isReloading = false; // Biến kiểm tra có đang nạp đạn không
+    private float nextFireTime = 0f; // Thời gian tiếp theo có thể bắn
+
+    private bool isFiring = false; // Biến kiểm tra trạng thái bắn
+
+    public RuntimeAnimatorController animatorDefault;
+    public RuntimeAnimatorController animatorZoom;
+
     private Rigidbody rb;
-
-    public GameObject effectHit;
-
-    public int ammoCount = 45;
-    public int maxAmmo = 45;
-    public TextMeshProUGUI ammoText;
-
-    public GameObject bangDan;
     void Start()
     {
-        bangDan.SetActive(true);
         rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-        UpdateAmmoUI();
     }
 
     void Update()
     {
-        if (!isReloading) // Chỉ cho phép di chuyển nếu không nạp đạn
-        {
-            Move();
-        }
-
+        Move();
         Firing();
+        HandleZoom();
         Jump();
-        Aim();
-
-        if (Input.GetKeyDown(KeyCode.R) && ammoCount < maxAmmo) // Chỉ nạp đạn khi chưa đầy đạn
-        {
-            Reload();
-        }
     }
 
     void Move()
     {
-        if (cameraTransform == null || isFiring || isReloading) return; // Không di chuyển khi đang bắn hoặc nạp đạn
+        if (cameraTransform == null || isFiring) return; // Không di chuyển khi đang bắn
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float horizontal = Input.GetAxis("Horizontal"); // A, D hoặc phím mũi tên Trái/Phải
+        float vertical = Input.GetAxis("Vertical"); // W, S hoặc phím mũi tên Lên/Xuống
+        bool isRunning = Input.GetKey(KeyCode.LeftShift); // Kiểm tra có giữ Shift không
 
-        float currentSpeed = isRunning ? runSpeed : walkSpeed;
+        float currentSpeed = isRunning ? runSpeed : walkSpeed; // Nếu giữ Shift thì chạy
         Vector3 moveDirection = new Vector3(horizontal, 0, vertical).normalized;
 
-        if (moveDirection.magnitude > 0)
+        if (moveDirection.magnitude > 0) // Nếu có nhập di chuyển
         {
+            // Xác định hướng di chuyển theo Camera
             Vector3 camForward = cameraTransform.forward;
             Vector3 camRight = cameraTransform.right;
 
-            camForward.y = 0;
+            camForward.y = 0; // Loại bỏ độ nghiêng của Camera
             camRight.y = 0;
 
             Vector3 worldMoveDirection = (camForward * vertical + camRight * horizontal).normalized;
+
+            // Di chuyển nhân vật
             transform.Translate(worldMoveDirection * currentSpeed * Time.deltaTime, Space.World);
 
+            // Quay nhân vật theo hướng di chuyển
             Quaternion targetRotation = Quaternion.LookRotation(worldMoveDirection);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
+            // Xác định animation đi bộ hay chạy
             _animator.SetBool("isWalk", !isRunning);
             _animator.SetBool("isRun", isRunning);
         }
         else
         {
+            // Dừng animation
             _animator.SetBool("isWalk", false);
             _animator.SetBool("isRun", false);
         }
     }
-
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isReloading) // Không cho nhảy khi đang nạp đạn
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             _animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * moveJump, ForceMode.Impulse);
         }
     }
-
-    void Aim()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-
-        }
-    }
-
     void Firing()
     {
-        if (ammoCount > 0 && Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime && !isReloading) // Không bắn khi đang nạp đạn
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime) // Kiểm tra nếu có thể bắn
         {
-            isFiring = true;
+            isFiring = true; // Đánh dấu đang bắn
             _animator.SetBool("isFire", true);
+            // Dừng animation
             _animator.SetBool("isWalk", false);
             _animator.SetBool("isRun", false);
-
+            // Xoay nhân vật về phía Camera
             if (cameraTransform != null)
             {
                 Vector3 lookDirection = cameraTransform.forward;
-                lookDirection.y = 0;
+                lookDirection.y = 0; // Loại bỏ độ nghiêng
                 transform.rotation = Quaternion.LookRotation(lookDirection);
             }
 
             ShootBullet();
-            nextFireTime = Time.time + fireRate;
+            nextFireTime = Time.time + fireRate; // Đặt thời gian delay cho lần bắn tiếp theo
         }
         else if (!Input.GetKey(KeyCode.Mouse0))
         {
-            isFiring = false;
+            isFiring = false; // Cho phép di chuyển lại khi ngừng bắn
             _animator.SetBool("isFire", false);
         }
     }
 
+    void HandleZoom()
+    {
+        if (Input.GetKey(KeyCode.Mouse1)) // Nếu nhấn chuột phải
+        {
+            _animator.runtimeAnimatorController = animatorZoom;
+        }
+        else
+        {
+            _animator.runtimeAnimatorController = animatorDefault;
+        }
+    }
     void ShootBullet()
     {
         if (bulletPrefab != null && firePoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            Destroy(bullet, 3f);
-            GameObject effect = Instantiate(effectHit, firePoint.position, Quaternion.identity);
-            Destroy(effect, 0.2f);
 
             if (rb != null)
             {
-                Vector3 shootDirection = targetTransform != null
-                    ? (targetTransform.position - firePoint.position).normalized
-                    : firePoint.forward;
+                Vector3 shootDirection;
 
-                rb.linearVelocity = shootDirection * bulletSpeed;
+                // Nếu có mục tiêu, bắn đến vị trí của mục tiêu
+                if (targetTransform != null)
+                {
+                    shootDirection = (targetTransform.position - firePoint.position).normalized;
+                }
+                else
+                {
+                    // Nếu không có target, bắn thẳng về phía trước
+                    shootDirection = firePoint.forward;
+                }
+
+                rb.linearVelocity = shootDirection * bulletSpeed; // Đạn bay về phía target
             }
-
-            ammoCount--;
-            UpdateAmmoUI();
         }
-    }
-
-    void UpdateAmmoUI()
-    {
-        if (ammoText != null)
-        {
-            ammoText.text = $"{ammoCount}/{maxAmmo}";
-        }
-    }
-
-    void Reload()
-    {
-        if (isReloading) return; // Nếu đang nạp đạn thì không gọi lại
-        isReloading = true; // Bắt đầu nạp đạn, khóa di chuyển
-        _animator.SetTrigger("Reload");
-    }
-
-   
-    public void StartReload()
-    {
-        isReloading = true;
-        bangDan.SetActive(false);
-    }
-
-   
-    public void EndReload()
-    {
-        isReloading = false;
-        ammoCount = maxAmmo; // Nạp đầy đạn
-        bangDan.SetActive(true);
-        UpdateAmmoUI();
     }
 }

@@ -9,23 +9,25 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 10f; // Tốc độ xoay nhân vật
 
     public GameObject bulletPrefab; // Prefab của đạn
-    public Transform firePoint; // Vị trí bắn (gắn vào súng hoặc trước nhân vật)
-    public Transform targetTransform; // Transform của mục tiêu (có thể là enemy hoặc điểm chỉ định)
+    public Transform firePoint; // Vị trí bắn 
+    public Transform targetTransform; // Transform của mục tiêu 
     public float bulletSpeed = 20f; // Tốc độ bay của đạn
     public float fireRate = 0.2f; // Thời gian delay giữa các lần bắn
 
-    public Transform cameraTransform; // Transform của Camera (gán từ Inspector)
-
+    public Transform cameraTransform; // Transform của Camera
+    
     private float nextFireTime = 0f; // Thời gian tiếp theo có thể bắn
 
     private bool isFiring = false; // Biến kiểm tra trạng thái bắn
 
-    public RuntimeAnimatorController animatorDefault;
-    public RuntimeAnimatorController animatorZoom;
-
     private Rigidbody rb;
+
+    public GameObject effectHit;
+
+   
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
@@ -34,8 +36,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Firing();
-        HandleZoom();
         Jump();
+        Aim();
     }
 
     void Move()
@@ -86,6 +88,14 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * moveJump, ForceMode.Impulse);
         }
     }
+
+    void Aim()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+
+        }
+    }
     void Firing()
     {
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime) // Kiểm tra nếu có thể bắn
@@ -112,25 +122,15 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isFire", false);
         }
     }
-
-    void HandleZoom()
-    {
-        if (Input.GetKey(KeyCode.Mouse1)) // Nếu nhấn chuột phải
-        {
-            _animator.runtimeAnimatorController = animatorZoom;
-        }
-        else
-        {
-            _animator.runtimeAnimatorController = animatorDefault;
-        }
-    }
     void ShootBullet()
     {
         if (bulletPrefab != null && firePoint != null)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);        
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            GameObject effect = Instantiate(effectHit, firePoint.position, Quaternion.identity);
+            Destroy(effect, 0.2f);
             if (rb != null)
             {
                 Vector3 shootDirection;

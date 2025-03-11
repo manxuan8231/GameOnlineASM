@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bangDan;
 
     public float cooldownJump = 2f;
-    private float timeJump = 0f;    
+    private float timeJump = 0f;
     void Start()
     {
         bangDan.SetActive(true);
@@ -176,14 +176,12 @@ public class PlayerController : MonoBehaviour
         _animator.SetTrigger("Reload");
     }
 
-   
     public void StartReload()
     {
         isReloading = true;
         bangDan.SetActive(false);
     }
 
-   
     public void EndReload()
     {
         isReloading = false;

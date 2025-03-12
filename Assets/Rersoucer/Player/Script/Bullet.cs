@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -18,25 +18,15 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Monster"))
         {
             bloodEffect.SetActive(true);
+            
             Destroy(gameObject,2f);
+            Debug.Log("đã chạm");
         }
-        if (other.gameObject.CompareTag("Boss"))
+        else if (other.gameObject.CompareTag("Boss"))
         {
             bloodEffect.SetActive(true);
             Destroy(gameObject,2f);
         }
     }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Monster"))
-        {
-            bloodEffect.SetActive(false);
-           
-        }
-        if (other.gameObject.CompareTag("Boss"))
-        {
-            bloodEffect.SetActive(false);
-
-        }
-    }
+    
 }

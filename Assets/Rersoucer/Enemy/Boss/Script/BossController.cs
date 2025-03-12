@@ -10,7 +10,7 @@ public class BossController : MonoBehaviour
     private Transform player;
     public float radius = 25f;
     public float rangeAttack = 2f;
-
+    public GameObject FloatingTargetPrefab;
     [SerializeField] private string targetTag = "";
     private NavMeshAgent agent;
     private Animator animator;
@@ -196,12 +196,20 @@ public class BossController : MonoBehaviour
     {
         if (currentState == EnemyState.Death) return;
         currentHealth -= damage;
+        Popup(damage);
         currentHealth = Mathf.Max(0, currentHealth);
+
         if(currentHealth < 0)
         {
             ChangeState(EnemyState.Death);
         }
         
     }
-   
+    public void Popup(float damage)
+    {
+        // hiện popup
+        var go = Instantiate(FloatingTargetPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = damage.ToString();
+        Debug.Log(damage);
+    }
 }

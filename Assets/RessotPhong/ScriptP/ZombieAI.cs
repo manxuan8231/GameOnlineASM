@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -74,20 +74,30 @@ public class ZombieAI : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        animator.SetTrigger("hitdame");
-        audioSource.PlayOneShot(attackSound);
+        animator.SetTrigger("attack");
         yield return new WaitForSeconds(0.5f);
 
-        if (target != null)
+        /*if (target != null)
         {
-            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+            HpSlider playerHealth = target.GetComponent<HpSlider>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(damage);
+                playerHealth.TakeDame(damage);
             }
-        }
+        }*/
         yield return new WaitForSeconds(attackCooldown - 0.5f);
         isAttacking = false;
         nextAttackTime = Time.time + attackCooldown;
     }
+
+    public void BeginAttack()
+    {
+        HpSlider playerHealth = target.GetComponent<HpSlider>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDame(damage);
+            audioSource.PlayOneShot(attackSound);
+        }
+    }
+
 }

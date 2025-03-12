@@ -22,8 +22,15 @@ public class BossController : MonoBehaviour
     public bool canUseSkill = true;
     public int maxHealth = 200;
     public int currentHealth;
+
+    private AudioSource audioSource;
+    public AudioClip dancingClip;
+    public AudioClip combatClip;
+    public AudioClip skillClip;
+    public AudioClip deathClip;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         currentState = EnemyState.IdleCombat;
@@ -39,6 +46,7 @@ public class BossController : MonoBehaviour
     {
         if (currentState == EnemyState.Death) return;
         if (player == null) return;
+        if (audioSource == null) return;
 
         float distanceToTarget = Vector3.Distance(player.position, transform.position);
 
@@ -79,6 +87,10 @@ public class BossController : MonoBehaviour
         {
             case EnemyState.Dancing:
                 agent.isStopped = true;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(dancingClip);
+                }
                 break;
 
             case EnemyState.IdleCombat:
@@ -105,7 +117,10 @@ public class BossController : MonoBehaviour
 
             case EnemyState.Combat:
                 agent.isStopped = true;
-
+                //if (!audioSource.isPlaying)
+                //{
+                //    audioSource.PlayOneShot(combatClip);
+                //}
                 // Nếu player chạy ra khỏi rangeAttack -> Chuyển về Walk
                 if (distanceToTarget > rangeAttack)
                 {
@@ -114,15 +129,34 @@ public class BossController : MonoBehaviour
                 break;
             case EnemyState.Skill:
                 agent.isStopped = false;
-              
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(skillClip);
+                }
 
-                    break;
+                break;
             case EnemyState.Death:
                 agent.isStopped = true;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(deathClip);
+                }
+                agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
+                GetComponent<Collider>().enabled = false;
                 Destroy(gameObject, 2f);
                 break;
             
            
+        }
+    }
+    public void combatSoundAnmt()
+    {
+        if(currentState == EnemyState.Combat)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(combatClip);
+            }
         }
     }
 

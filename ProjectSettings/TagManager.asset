@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - FxTemporaire
   - Boss
+  - Monster
   layers:
   - Default
   - TransparentFX

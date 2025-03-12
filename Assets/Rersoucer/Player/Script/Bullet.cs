@@ -2,10 +2,10 @@
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject bloodEffect;
+    
     void Start()
     {
-        bloodEffect.SetActive(false);
+        
     }
     
     void Update()
@@ -16,16 +16,13 @@ public class Bullet : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Monster"))
-        {
-            bloodEffect.SetActive(true);
-            
-            Destroy(gameObject,2f);
+        {                   
+            Destroy(gameObject);
             Debug.Log("đã chạm");
         }
         else if (other.gameObject.CompareTag("Boss"))
-        {
-            bloodEffect.SetActive(true);
-            Destroy(gameObject,2f);
+        {           
+            Destroy(gameObject);
         }
     }
     

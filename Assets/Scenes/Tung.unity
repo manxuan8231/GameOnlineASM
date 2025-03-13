@@ -2129,6 +2129,73 @@ Transform:
   - {fileID: 778424422}
   m_Father: {fileID: 606170685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1049277998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049277999}
+  - component: {fileID: 1049278000}
+  - component: {fileID: 1049278001}
+  m_Layer: 0
+  m_Name: SkillDameZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049277999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049277998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1606829319507373864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049278000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049277998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c15e5e40b76c24096cc843bbb90803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
+--- !u!65 &1049278001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049277998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7170608, y: 1.8874122, z: 3.739822}
+  m_Center: {x: -0.16277039, y: 0.95175725, z: 1.369911}
 --- !u!1 &1063437527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce907e64e221604c8aab2a4ea71508d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 15
 --- !u!65 &1120227566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2341,7 +2409,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2475,7 +2543,7 @@ Transform:
   m_GameObject: {fileID: 1141315601}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.19, y: -0.09219861, z: 27.163372}
+  m_LocalPosition: {x: 4.19, y: -0.09219861, z: 30.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2684,7 +2752,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8816379615262556758, guid: 4c2e61ee36e0c2f49bb1d111dbbf0168, type: 3}
   firePoint: {fileID: 714478386}
   targetTransform: {fileID: 1489477716}
-  bulletSpeed: 500
+  bulletSpeed: 100
   fireRate: 0.2
   cameraTransform: {fileID: 735914339}
   effectHit: {fileID: 3651043622930585265, guid: 6874bda607f618a4aaf50403aada8c3a, type: 3}
@@ -15496,6 +15564,7 @@ Transform:
   - {fileID: 6493284716763221948}
   - {fileID: 817648526117783665}
   - {fileID: 1120227564}
+  - {fileID: 1049277999}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1729497750547243116
@@ -25331,7 +25400,7 @@ MonoBehaviour:
   currentState: 0
   radius: 25
   rangeAttack: 2
-  FloatingTargetPrefab: {fileID: 0}
+  FloatingTargetPrefab: {fileID: 5263825233000620200, guid: 7cf4962acc1cda44bbba8a86f6d4190d, type: 3}
   targetTag: Player
   rangeSkill: 8.5
   cooldownSkill: 15
@@ -25343,6 +25412,8 @@ MonoBehaviour:
   skillClip: {fileID: 8300000, guid: 2ab15fc8978bc8f41b80b5e4cfdffd6d, type: 3}
   deathClip: {fileID: 8300000, guid: 542ba4718ed6e7d46a94f425997d400d, type: 3}
   skill: {fileID: 4503467069657771435}
+  boxDamage: {fileID: 1120227563}
+  skillDameZone: {fileID: 1049277998}
 --- !u!82 &2091722380347651480
 AudioSource:
   m_ObjectHideFlags: 0

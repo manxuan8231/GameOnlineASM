@@ -5924,12 +5924,17 @@ MonoBehaviour:
   currentState: 0
   radius: 25
   rangeAttack: 2
+  FloatingTargetPrefab: {fileID: 0}
   targetTag: Player
   rangeSkill: 5
   cooldownSkill: 15
   canUseSkill: 1
   maxHealth: 200
   currentHealth: 0
+  dancingClip: {fileID: 0}
+  combatClip: {fileID: 0}
+  skillClip: {fileID: 0}
+  deathClip: {fileID: 0}
 --- !u!4 &2134462141542247517
 Transform:
   m_ObjectHideFlags: 0

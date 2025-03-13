@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BossController : MonoBehaviour
 {
+    
     public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death,Skill }
     public EnemyState currentState;
     private Transform player;
@@ -29,8 +30,12 @@ public class BossController : MonoBehaviour
     public AudioClip skillClip;
     public AudioClip deathClip;
     public GameObject skill;
+    public GameObject boxDamage;
+    public GameObject skillDameZone;
     void Start()
     {
+        skillDameZone.SetActive(false);
+        boxDamage.SetActive(false);
         skill.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
@@ -214,6 +219,7 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(cooldownSkill);
         canUseSkill = true; 
     }
+
     public void TakeDamage(int damage)
     {
         if (currentState == EnemyState.Death) return;
@@ -252,5 +258,23 @@ public class BossController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, rangeAttack);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, rangeSkill);
+    }
+
+    public void StartDame()
+    {
+        boxDamage.SetActive(true);
+    }
+    public void EndDame()
+    {
+        boxDamage.SetActive(false);
+    }
+
+    public void StartSkill()
+    {
+        skillDameZone.SetActive(true);
+    }
+    public void EndSkill()
+    {
+        skillDameZone.SetActive(false);
     }
 }

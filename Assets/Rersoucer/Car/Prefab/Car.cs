@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,9 +33,10 @@ public class Car : MonoBehaviour
             GetWheel(1);
         }
        
-        if (wheel.activeSelf && wheel1.activeSelf && wheel2.activeSelf && wheel3.activeSelf)
+        if (wheel.activeSelf && wheel1.activeSelf && wheel2.activeSelf && wheel3.activeSelf)//điều kiện win
         {
             can.SetActive(false);
+            //ghi chức năng ở đây 
         }
     }
     public void GetWheel(int amount)

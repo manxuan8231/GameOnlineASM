@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class DameZone : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int damage = 15;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Player"))
+        {
+            HpSlider playerHp = other.GetComponent<HpSlider>();
+            playerHp.TakeDame(damage);    
+        }
     }
 }

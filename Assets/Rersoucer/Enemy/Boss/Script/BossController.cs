@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class BossController : MonoBehaviour
 {
+    
     public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death,Skill }
     public EnemyState currentState;
     private Transform player;
@@ -29,8 +30,12 @@ public class BossController : MonoBehaviour
     public AudioClip skillClip;
     public AudioClip deathClip;
     public GameObject skill;
+    public GameObject boxDamage;
+    public GameObject skillDameZone;
     void Start()
     {
+        skillDameZone.SetActive(false);
+        boxDamage.SetActive(false);
         skill.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
@@ -94,7 +99,7 @@ public class BossController : MonoBehaviour
         if (currentState == newState) return;
 
         animator.ResetTrigger("Walk");
-        animator.ResetTrigger("Death");
+        
         animator.ResetTrigger("Combat");
         animator.ResetTrigger("IdleCombat");
         animator.ResetTrigger("Dancing");
@@ -156,13 +161,16 @@ public class BossController : MonoBehaviour
                 break;
             case EnemyState.Death:
                 agent.isStopped = true;
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.PlayOneShot(deathClip);
-                }
-                agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
-                GetComponent<Collider>().enabled = false;
-                Destroy(gameObject, 2f);
+                Debug.Log("Death");
+
+                animator.SetTrigger("Death");
+                    //if (!audioSource.isPlaying)
+                    //{
+                    //    audioSource.PlayOneShot(deathClip);
+                    //}
+                    //agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
+                    //GetComponent<Collider>().enabled = false;
+                    //Destroy(gameObject, 2f);   
                 break;
             
            
@@ -211,18 +219,28 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(cooldownSkill);
         canUseSkill = true; 
     }
+
     public void TakeDamage(int damage)
     {
         if (currentState == EnemyState.Death) return;
         currentHealth -= damage;
+        Debug.Log(currentHealth);
         Popup(damage);
-        currentHealth = Mathf.Max(currentHealth, 0, maxHealth);
+        
+    
 
         if(currentHealth <= 0)
         {
             ChangeState(EnemyState.Death);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(deathClip);
+            }
+            agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
+            GetComponent<Collider>().enabled = false;
+            Destroy(gameObject, 2f);
         }
-        
+
     }
     public void Popup(float damage)
     {
@@ -230,5 +248,33 @@ public class BossController : MonoBehaviour
         var go = Instantiate(FloatingTargetPrefab, transform.position, Quaternion.identity, transform);
         go.GetComponent<TextMesh>().text = damage.ToString();
         Debug.Log(damage);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, rangeAttack);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, rangeSkill);
+    }
+
+    public void StartDame()
+    {
+        boxDamage.SetActive(true);
+    }
+    public void EndDame()
+    {
+        boxDamage.SetActive(false);
+    }
+
+    public void StartSkill()
+    {
+        skillDameZone.SetActive(true);
+    }
+    public void EndSkill()
+    {
+        skillDameZone.SetActive(false);
     }
 }

@@ -28,8 +28,10 @@ public class BossController : MonoBehaviour
     public AudioClip combatClip;
     public AudioClip skillClip;
     public AudioClip deathClip;
+    public GameObject skill;
     void Start()
     {
+        skill.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -58,6 +60,26 @@ public class BossController : MonoBehaviour
         }
        
         HandleState(distanceToTarget);
+    }
+    IEnumerator showSKillRoutie()
+    {
+        skill.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        skill.SetActive(false);
+    }
+    public void ShowSkill()
+    {
+        StartCoroutine(showSKillRoutie());
+    }
+    public void SkillSoundANMT()
+    {
+        if (currentState == EnemyState.Skill)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(skillClip);
+            }
+        }
     }
 
     IEnumerator DancingRoutine()
@@ -129,10 +151,7 @@ public class BossController : MonoBehaviour
                 break;
             case EnemyState.Skill:
                 agent.isStopped = false;
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.PlayOneShot(skillClip);
-                }
+               
 
                 break;
             case EnemyState.Death:

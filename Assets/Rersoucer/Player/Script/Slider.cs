@@ -16,7 +16,8 @@ public class HpSlider : MonoBehaviour
     public void TakeDame(float amout)
     {
         sliderHp.value -= amout;
-        if(sliderHp.value <= 0)
+        sliderHp.value = Mathf.Clamp(sliderHp.value, 0, maxHp); 
+        if (sliderHp.value <= 0)
         {
             Destroy(gameObject);
         }

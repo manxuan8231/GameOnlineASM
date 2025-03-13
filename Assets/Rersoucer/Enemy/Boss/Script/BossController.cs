@@ -216,9 +216,9 @@ public class BossController : MonoBehaviour
         if (currentState == EnemyState.Death) return;
         currentHealth -= damage;
         Popup(damage);
-        currentHealth = Mathf.Max(0, currentHealth);
+        currentHealth = Mathf.Max(currentHealth, 0, maxHealth);
 
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
             ChangeState(EnemyState.Death);
         }

@@ -151,7 +151,7 @@ public class BossController : MonoBehaviour
                 break;
             case EnemyState.Skill:
                 agent.isStopped = false;
-               
+                agent.stoppingDistance = rangeAttack;
 
                 break;
             case EnemyState.Death:

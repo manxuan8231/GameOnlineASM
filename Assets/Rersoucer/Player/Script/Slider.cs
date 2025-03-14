@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Fusion;
+using UnityEngine;
 using UnityEngine.UI; 
 
-public class HpSlider : MonoBehaviour
+public class HpSlider : NetworkBehaviour
 {
     public Slider sliderHp; 
     public float maxHp = 100f;
@@ -22,7 +23,7 @@ public class HpSlider : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Update()
+    public override void FixedUpdateNetwork()
     {
         if(Input.GetKey(KeyCode.LeftShift))
         {

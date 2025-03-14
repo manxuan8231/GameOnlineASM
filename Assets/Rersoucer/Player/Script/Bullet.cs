@@ -2,7 +2,7 @@
 
 public class Bullet : MonoBehaviour
 {
-    
+    SliderZombie sliderZombie;
     void Start()
     {
         
@@ -17,14 +17,17 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Monster"))
         {
-            
-            Destroy(gameObject);
-           
+            sliderZombie = other.gameObject.GetComponent<SliderZombie>();
+            if (sliderZombie != null)
+            {
+                sliderZombie.TakeDamage(40);
+                Destroy(gameObject);
+            }                    
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
             BossController boss = FindAnyObjectByType<BossController>();    
-            boss.TakeDamage(20);
+            boss.TakeDamage(10);
             Debug.Log("đã chạm");
             Destroy(gameObject);
         }

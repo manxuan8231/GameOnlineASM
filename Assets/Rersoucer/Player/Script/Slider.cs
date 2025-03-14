@@ -40,4 +40,9 @@ public class HpSlider : MonoBehaviour
         // Giới hạn mana trong khoảng từ 0 đến maxMana
         sliderMana.value = Mathf.Clamp(sliderMana.value, 0, maxMana);
     }
+    public void heal(float amout)
+    {
+        sliderHp.value += amout;
+        sliderHp.value = Mathf.Clamp(sliderHp.value, 0, maxHp);
+    }
 }

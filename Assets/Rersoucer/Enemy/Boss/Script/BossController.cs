@@ -164,13 +164,7 @@ public class BossController : MonoBehaviour
                 Debug.Log("Death");
 
                 animator.SetTrigger("Death");
-                    //if (!audioSource.isPlaying)
-                    //{
-                    //    audioSource.PlayOneShot(deathClip);
-                    //}
-                    //agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
-                    //GetComponent<Collider>().enabled = false;
-                    //Destroy(gameObject, 2f);   
+                   
                 break;
             
            

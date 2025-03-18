@@ -1,6 +1,7 @@
+using Fusion;
 using UnityEngine;
 
-public class PlayerSounds : MonoBehaviour
+public class PlayerSounds : NetworkBehaviour
 {
     public AudioSource audioSource;
     public AudioClip clipWalk;

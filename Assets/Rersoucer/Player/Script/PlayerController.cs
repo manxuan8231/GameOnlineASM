@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Fusion;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     private Animator _animator;
     public float moveJump = 10;
@@ -41,13 +42,12 @@ public class PlayerController : MonoBehaviour
         UpdateAmmoUI();
     }
 
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         if (!isReloading) // Chỉ cho phép di chuyển nếu không nạp đạn
         {
             Move();
         }
-
         Firing();
         Jump();
         Aim();

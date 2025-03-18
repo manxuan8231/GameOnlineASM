@@ -1,0 +1,24 @@
+﻿using Fusion;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerSpawn : SimulationBehaviour, IPlayerJoined
+{
+    public GameObject playerPrefab;
+    //khi vao mang thi se tao nhan vat cho nguoi choi
+    //public Vector3 d = new (0, 1, 0);
+    public void PlayerJoined(PlayerRef player)
+    {
+        if (player == Runner.LocalPlayer) 
+        {
+            //tạo vị trí ở 0, 1, 0
+           var position = new Vector3(0, 1, 0);
+            //spawn nhân vật
+           Runner.Spawn(playerPrefab, position, Quaternion.identity);
+        }
+    }
+}
+
+    
+   

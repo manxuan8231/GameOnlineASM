@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Map2.unity
+    guid: 40ef6e60490d68541971945758777f58
   - enabled: 0
     path: Assets/AlterunaFPS/Scenes/Menu.unity
     guid: 526747f12f76a244684fbd832912e91b

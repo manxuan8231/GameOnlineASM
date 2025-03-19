@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Monster
   - cameraTarget
+  - Tam
   layers:
   - Default
   - TransparentFX

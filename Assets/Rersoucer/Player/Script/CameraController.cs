@@ -1,9 +1,9 @@
 ﻿using Fusion;
 using UnityEngine;
-
-public class CameraController : NetworkBehaviour
+using Unity.Cinemachine;
+public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform target; 
+    //SerializeField] private Transform target; 
     [SerializeField] private Vector3 cameraOffset = new Vector3(0, 2, -2.5f); // Vị trí camera từ Inspector
     [SerializeField] private float sensitivity = 2f; // Độ nhạy xoay camera
     [SerializeField] private Vector2 rotationLimits = new Vector2(-30f, 60f); // Giới hạn góc nhìn lên/xuống
@@ -14,6 +14,7 @@ public class CameraController : NetworkBehaviour
     private bool isCursorLocked = true; // Trạng thái khóa con trỏ chuột
     private float defaultZOffset; // Lưu giá trị Z gốc của camera
 
+   public CinemachineCamera followCamera;
     void Start()
     {
         LockCursor(true); // Mặc định khóa chuột khi vào game
@@ -22,8 +23,6 @@ public class CameraController : NetworkBehaviour
 
     void Update() // Dùng Update để tránh giật hình khi xoay
     {
-        if (!Object.HasStateAuthority) return; // Chỉ xử lý camera của người chơi cục bộ
-
         HandleCursorToggle();
         HandleZoom();
         RotateCamera();
@@ -31,12 +30,12 @@ public class CameraController : NetworkBehaviour
 
     void LateUpdate() // Dùng LateUpdate để tránh jitter khi follow
     {
-        FollowPlayer();
+       // FollowPlayer();
     }
 
     void HandleCursorToggle()
     {
-        if (Input.GetKeyDown(KeyCode.L) && Input.GetKeyDown(KeyCode.LeftAlt)) // Bấm cùng lúc Alt + L
+        if (Input.GetKeyDown(KeyCode.L)) // Bấm cùng lúc Alt + L
         {
             isCursorLocked = !isCursorLocked;
             LockCursor(isCursorLocked);
@@ -62,14 +61,20 @@ public class CameraController : NetworkBehaviour
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, rotationLimits.x, rotationLimits.y);
         rotationY += mouseX;
+
+        transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
     }
 
-    void FollowPlayer()
+
+    public void FollowPlayer(Transform targetPL)
     {
-        if (target == null) return;
+        
+        if (followCamera == null || targetPL == null) return;
+        followCamera.Follow = targetPL;
+        followCamera.LookAt = targetPL;
 
         Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
-        Vector3 desiredPosition = target.position + rotation * cameraOffset;
+        Vector3 desiredPosition = targetPL.position + rotation * cameraOffset;
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * smoothSpeed);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * smoothSpeed); // Làm mượt xoay

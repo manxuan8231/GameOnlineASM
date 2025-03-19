@@ -36,6 +36,8 @@ public class PlayerController : NetworkBehaviour
     private float timeJump = 0f;
     void Start()
     {
+        cameraTransform = FindAnyObjectByType<CameraController>().transform;
+        targetTransform = GameObject.Find("Tam").transform;
         bangDan.SetActive(true);
         rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();

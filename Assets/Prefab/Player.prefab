@@ -269,7 +269,6 @@ MonoBehaviour:
   - {fileID: 3843837814656146878}
   - {fileID: 8010759841675879875}
   - {fileID: -2965192816574197290}
-  - {fileID: 7916939964843642808}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-2965192816574197290
 MonoBehaviour:
@@ -436,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad65b3231be7df4d90b3d34b43ea2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4653082516782439016}
   cameraOffset: {x: 0.06561163, y: 1.731801, z: -2.5}
   sensitivity: 2
   rotationLimits: {x: -30, y: 60}

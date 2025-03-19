@@ -15,7 +15,15 @@ public class PlayerSpawn : SimulationBehaviour, IPlayerJoined
             //tạo vị trí ở 0, 1, 0
            var position = new Vector3(0, 1, 0);
             //spawn nhân vật
-           Runner.Spawn(playerPrefab, position, Quaternion.identity);
+           Runner.Spawn(playerPrefab, position, Quaternion.identity, Runner.LocalPlayer,(runner,obj) => {
+               var playerSetup = obj.GetComponent<PlayerSetup>();
+               if (playerSetup != null)
+               {
+                   playerSetup.SetupCamera();//camera
+                   playerSetup.SetupPlayer();//diem, mp, hp
+               }
+               ;
+           });
         }
     }
 }

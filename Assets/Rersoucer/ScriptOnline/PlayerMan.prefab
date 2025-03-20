@@ -2338,9 +2338,10 @@ GameObject:
   - component: {fileID: 594542972574767938}
   - component: {fileID: 2145824770720703012}
   - component: {fileID: 49068894542795962}
-  - component: {fileID: -1605272043313772189}
+  - component: {fileID: 3602248637341967603}
+  - component: {fileID: -5827877884642924895}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: PlayerMan
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2355,7 +2356,7 @@ Transform:
   m_GameObject: {fileID: 4188220814197496146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.858816, y: 0.099998474, z: 62.315624}
+  m_LocalPosition: {x: -31.624817, y: -0.0000019073486, z: -240.40042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2589,7 +2590,7 @@ MonoBehaviour:
   - {fileID: 3097183067173208865}
   - {fileID: 4780289432588517365}
   - {fileID: 2145824770720703012}
-  - {fileID: -1605272043313772189}
+  - {fileID: 3602248637341967603}
   - {fileID: 2484187058785398445}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &2145824770720703012
@@ -2636,16 +2637,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-1605272043313772189
+--- !u!114 &3602248637341967603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4188220814197496146}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 363a61a407918e049988fecbde0727ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5827877884642924895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188220814197496146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a3885c13c88e489bb5ad57851198c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4278874876011172833

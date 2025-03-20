@@ -15,23 +15,20 @@ public class CameraController : MonoBehaviour
     private float defaultZOffset; // Lưu giá trị Z gốc của camera
 
    public CinemachineCamera followCamera;
+    
     void Start()
     {
         LockCursor(true); // Mặc định khóa chuột khi vào game
         defaultZOffset = cameraOffset.z; // Lưu giá trị Z gốc
     }
 
-    void Update() // Dùng Update để tránh giật hình khi xoay
+    void Update()
     {
         HandleCursorToggle();
         HandleZoom();
         RotateCamera();
     }
 
-    void LateUpdate() // Dùng LateUpdate để tránh jitter khi follow
-    {
-       // FollowPlayer();
-    }
 
     void HandleCursorToggle()
     {
@@ -55,6 +52,7 @@ public class CameraController : MonoBehaviour
 
     void RotateCamera()
     {
+        
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
@@ -63,20 +61,27 @@ public class CameraController : MonoBehaviour
         rotationY += mouseX;
 
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        
     }
-
 
     public void FollowPlayer(Transform targetPL)
     {
         
-        if (followCamera == null || targetPL == null) return;
-        followCamera.Follow = targetPL;
-        followCamera.LookAt = targetPL;
+        if (followCamera != null && targetPL != null)
+        {
+            followCamera.Follow = targetPL; // Không Follow trực tiếp
+            followCamera.LookAt = targetPL; // Camera luôn nhìn về nhân vật
+        }
 
         Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
         Vector3 desiredPosition = targetPL.position + rotation * cameraOffset;
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * smoothSpeed);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * smoothSpeed); // Làm mượt xoay
+
+
+        // Đặt vị trí camera quanh nhân vật
+        followCamera.transform.position = targetPL.position + cameraOffset;
+        followCamera.transform.LookAt(targetPL);
     }
 }

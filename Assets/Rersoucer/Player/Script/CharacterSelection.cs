@@ -1,27 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
 {
-    private PlayerSpawn playerSpawn;
+    public static int selectedCharacter = 0; // Mặc định nhân vật 1
 
-    void Start()
+    public void SelectCharacter(int index)
     {
-        playerSpawn = FindAnyObjectByType<PlayerSpawn>();
-    }
-    void Update()
-    {
-        SelectCharacter();
-    }
-    public void SelectCharacter()
-    {
-       
-           playerSpawn.characterIndex = 1;
-           
-        
-    }
-    public void SelectCharacter2()
-    {
-        playerSpawn.characterIndex = 2;
-
+        selectedCharacter = index;
+        Debug.Log("Nhân vật được chọn: " + selectedCharacter);
+        SceneManager.LoadScene("Map2"); // Chuyển sang scene game
+        PlayerPrefs.Save();
     }
 }

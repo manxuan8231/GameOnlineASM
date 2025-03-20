@@ -1,32 +1,48 @@
 ﻿using Fusion;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawn : SimulationBehaviour, IPlayerJoined
 {
     public GameObject playerPrefab;
-    //khi vao mang thi se tao nhan vat cho nguoi choi
-    //public Vector3 d = new (0, 1, 0);
+    public GameObject playerPrefab2;
+    public int characterIndex = 0;
     public void PlayerJoined(PlayerRef player)
     {
-        if (player == Runner.LocalPlayer) 
+        
+            if (player == Runner.LocalPlayer)
+            {
+                Vector3 position = new Vector3(-30.41528f, -1.907349e-06f, -237.8279f);
+
+                Runner.Spawn(playerPrefab, position, Quaternion.identity, Runner.LocalPlayer, (runner, obj) =>
+                {
+                    var playerSetup = obj.GetComponent<PlayerSetup>();
+                    if (playerSetup != null)
+                    {
+                        playerSetup.SetupCamera();
+                        playerSetup.SetupPlayer();
+                    }
+                });
+            }
+        if (player == Runner.LocalPlayer)
         {
-            //tạo vị trí ở 0, 1, 0
-           var position = new Vector3(-30.41528f, -1.907349e-06f, -237.8279f);
-            //spawn nhân vật
-           Runner.Spawn(playerPrefab, position, Quaternion.identity, Runner.LocalPlayer,(runner,obj) => {
-               var playerSetup = obj.GetComponent<PlayerSetup>();
-               if (playerSetup != null)
-               {
-                   playerSetup.SetupCamera();//camera
-                   playerSetup.SetupPlayer();//diem, mp, hp
-               }
-               ;
-           });
+            Vector3 position = new Vector3(-30.41528f, -1.907349e-06f, -237.8279f);
+
+            Runner.Spawn(playerPrefab2, position, Quaternion.identity, Runner.LocalPlayer, (runner, obj) =>
+            {
+                var playerSetup = obj.GetComponent<PlayerSetup>();
+                if (playerSetup != null)
+                {
+                    playerSetup.SetupCamera();
+                    playerSetup.SetupPlayer();
+                }
+            });
+        }
+    }
+    public void PlayerJoined2(PlayerRef player)
+    {
+        if (characterIndex == 2)
+        {
+            
         }
     }
 }
-
-    
-   

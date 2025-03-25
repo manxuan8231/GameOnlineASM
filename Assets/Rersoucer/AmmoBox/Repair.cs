@@ -19,8 +19,9 @@ public class Repair : MonoBehaviour
         {
             Car car = FindAnyObjectByType<Car>();
             car.GetWheel(1);
-            audioSource.PlayOneShot(clip);
             Destroy(gameObject);
+            audioSource.PlayOneShot(clip);
+            
         }
     }
 }

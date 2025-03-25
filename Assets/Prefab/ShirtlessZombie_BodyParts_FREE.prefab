@@ -2348,7 +2348,7 @@ GameObject:
   - component: {fileID: 1352598413875688969}
   - component: {fileID: 6764727179892657907}
   - component: {fileID: -6715212629596161412}
-  - component: {fileID: 3083732254077650422}
+  - component: {fileID: -3988890130741719125}
   m_Layer: 0
   m_Name: ShirtlessZombie_BodyParts_FREE
   m_TagString: Monster
@@ -2403,13 +2403,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5049234051008758518}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8b8967ab8853184fa3cd4144da75ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 20
-  attackRange: 2
+  detectionRadius: 100
+  attackRange: 1.15
   attackCooldown: 2
   damage: 5
   attackSound: {fileID: 8300000, guid: 37c9133889e2bfc4296ead93a281acc2, type: 3}
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5049234051008758518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca443f106f18a214e8ea1112bbb1a7ac, type: 3}
   m_Name: 
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5049234051008758518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9f7eb776de378c43aab05c2a244c110, type: 3}
   m_Name: 
@@ -2617,9 +2617,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -6115434630895187032}
-  - {fileID: 3083732254077650422}
+  - {fileID: -3988890130741719125}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &3083732254077650422
+--- !u!114 &-3988890130741719125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

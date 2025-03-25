@@ -2340,12 +2340,15 @@ GameObject:
   m_Component:
   - component: {fileID: 3386328348555959442}
   - component: {fileID: 5879476902922979680}
+  - component: {fileID: -6115434630895187032}
   - component: {fileID: 8957220974675609043}
   - component: {fileID: 7932519119873952660}
   - component: {fileID: 7481307457257372868}
   - component: {fileID: 8251307740986293833}
   - component: {fileID: 1352598413875688969}
   - component: {fileID: 6764727179892657907}
+  - component: {fileID: -6715212629596161412}
+  - component: {fileID: 3083732254077650422}
   m_Layer: 0
   m_Name: ShirtlessZombie_BodyParts_FREE
   m_TagString: Monster
@@ -2393,6 +2396,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6115434630895187032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049234051008758518}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b8967ab8853184fa3cd4144da75ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 20
+  attackRange: 2
+  attackCooldown: 2
+  damage: 5
+  attackSound: {fileID: 8300000, guid: 37c9133889e2bfc4296ead93a281acc2, type: 3}
 --- !u!114 &8957220974675609043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2579,6 +2599,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.60209703, y: 2.06, z: 0.5473188}
   m_Center: {x: 0.0035521984, y: 1.06, z: 0.0039494634}
+--- !u!114 &-6715212629596161412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049234051008758518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1626633088
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: -6115434630895187032}
+  - {fileID: 3083732254077650422}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &3083732254077650422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049234051008758518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &5056612639974484635
 GameObject:
   m_ObjectHideFlags: 0

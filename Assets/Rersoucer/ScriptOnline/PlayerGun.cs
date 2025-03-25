@@ -44,7 +44,7 @@ public class PlayerGun : NetworkBehaviour
         if (!Object.HasInputAuthority || isReloading) return;
 
         // Bắn khi nhấn chuột hoặc phím F
-        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.F)) && currentAmmo > 0)
+        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Q)) && currentAmmo > 0)
         {
             Shoot();
         }

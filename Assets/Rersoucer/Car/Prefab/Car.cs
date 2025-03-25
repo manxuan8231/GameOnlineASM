@@ -1,8 +1,9 @@
-﻿using TMPro;
+﻿using Fusion;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Car : MonoBehaviour
+public class Car : NetworkBehaviour
 {
     public GameObject wheel;
     public GameObject wheel1;
@@ -17,16 +18,19 @@ public class Car : MonoBehaviour
 
     public Slider sliderRepair;
     public TextMeshProUGUI textRepair;
+
+    public GameObject PanelVictory;
     void Start()
     {
+        PanelVictory.SetActive(false);
         sliderRepair.maxValue = 100;
         sliderRepair.value = 0;
         textRepair.text = $"{sliderRepair.value}%";
         wheelText.text = $"{wheelCount}/{maxWheelCount}";
     }
 
-   
-    void Update()
+
+    public override void FixedUpdateNetwork()
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -35,8 +39,9 @@ public class Car : MonoBehaviour
        
         if (wheel.activeSelf && wheel1.activeSelf && wheel2.activeSelf && wheel3.activeSelf)//điều kiện win
         {
-            can.SetActive(false);
+            can.SetActive(false);//cai can
             //ghi chức năng ở đây 
+            PanelVictory.SetActive(true);
         }
     }
     public void GetWheel(int amount)

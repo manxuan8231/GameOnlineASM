@@ -65230,7 +65230,7 @@ GameObject:
   - component: {fileID: 1556543935}
   - component: {fileID: 1556543934}
   - component: {fileID: 1556543933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87908,8 +87908,8 @@ GameObject:
   - component: {fileID: 2100525400}
   - component: {fileID: 2100525396}
   - component: {fileID: 2100525399}
-  - component: {fileID: 2100525398}
   - component: {fileID: 2100525397}
+  - component: {fileID: 2100525401}
   m_Layer: 0
   m_Name: Prototype Runner
   m_TagString: Untagged
@@ -87941,21 +87941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8edbe7108d8a43ab838cf8b8d9453df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2100525398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100525395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906d9a7d51b686c44925a0d521b6261f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _runner: {fileID: 0}
-  _object: {fileID: 0}
-  playerPrefabs: {fileID: 4188220814197496146, guid: 440d26a8a7738354fac3808d615951d8, type: 3}
 --- !u!114 &2100525399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88040,6 +88025,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100525401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100525395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906d9a7d51b686c44925a0d521b6261f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 3522951028410713093, guid: c1f79c3ebffb1ac439360bf1080c608d, type: 3}
 --- !u!1001 &2100917847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94187,7 +94185,8 @@ GameObject:
   - component: {fileID: 5704970331511848327}
   - component: {fileID: 7148806309449929819}
   - component: {fileID: 8751951200023145570}
-  - component: {fileID: 8751951200023145569}
+  - component: {fileID: 8751951200023145571}
+  - component: {fileID: 8751951200023145572}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -110786,7 +110785,7 @@ Transform:
   m_GameObject: {fileID: 6628845752500569165}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.4, z: 20.4}
+  m_LocalPosition: {x: 0, y: 5.474, z: 20.4}
   m_LocalScale: {x: 0.10369801, y: 0.10369801, z: 0.10369801}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116304,23 +116303,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2914785132210382553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8751951200023145569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585827083461265904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad65b3231be7df4d90b3d34b43ea2b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraOffset: {x: 0.06561163, y: 1.731801, z: -2.5}
-  sensitivity: 2
-  rotationLimits: {x: -30, y: 60}
-  smoothSpeed: 40
-  followCamera: {fileID: 7148806309449929819}
 --- !u!114 &8751951200023145570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116340,6 +116322,37 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 1.72, z: -2.5}
+--- !u!114 &8751951200023145571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585827083461265904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b92c8f2ba4f248a898d78077fd2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowCamera: {fileID: 7148806309449929819}
+  rotationSpeed: 150
+--- !u!114 &8751951200023145572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585827083461265904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad65b3231be7df4d90b3d34b43ea2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: {x: 0, y: 2, z: -2.5}
+  sensitivity: 2
+  rotationLimits: {x: -30, y: 60}
+  smoothSpeed: 10
+  followCamera: {fileID: 7148806309449929819}
 --- !u!222 &8848866958978091248
 CanvasRenderer:
   m_ObjectHideFlags: 0

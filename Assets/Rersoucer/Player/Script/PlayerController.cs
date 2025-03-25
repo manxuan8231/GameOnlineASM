@@ -52,7 +52,6 @@ public class PlayerController : NetworkBehaviour
         }
         Firing();
         Jump();
-        Aim();
 
         if (Input.GetKeyDown(KeyCode.R) && ammoCount < maxAmmo) // Chỉ nạp đạn khi chưa đầy đạn
         {

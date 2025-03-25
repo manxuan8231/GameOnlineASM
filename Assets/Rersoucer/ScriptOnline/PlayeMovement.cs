@@ -39,13 +39,14 @@ public class PlayeMovement : NetworkBehaviour
         // Xử lý nhảy
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);        
+            yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         // Áp dụng trọng lực
         yVelocity += gravity * Time.fixedDeltaTime;
         controller.Move(Vector3.up * yVelocity * Time.fixedDeltaTime);
 
-
+        
     }
+   
 }

@@ -14,8 +14,10 @@ public class HealItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             audioSource.PlayOneShot(healSound);
-            HpSlider playerHp = other.GetComponent<HpSlider>();
-            playerHp.heal(healAmout);
+           /* HpSlider playerHp = other.GetComponent<HpSlider>();
+            playerHp.heal(healAmout);*/
+           PlayerProperties playerProperties = FindAnyObjectByType<PlayerProperties>();
+            playerProperties.GetHealth(30);
             Debug.Log("Heal");
             Destroy(gameObject);
         }

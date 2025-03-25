@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerProperties : NetworkBehaviour
 {
@@ -11,17 +13,29 @@ public class PlayerProperties : NetworkBehaviour
     public float maxHealth { get; set; }
 
     public TextMeshProUGUI textHealth;  
+    public UnityEngine.UI.Slider healthSlider;
+    public GameObject sliderHp;
     public NetworkObject networkObject;
     public NetworkRunner networkRunner;
 
 
     public void OnHealthChanged()
     {
-        
-        textHealth.text = $"{currentHealth}/{maxHealth}";
-        
+        if (Object.HasInputAuthority)
+        {
+            textHealth.text = $"{currentHealth}/{maxHealth}";
+            healthSlider.value = currentHealth;
+            sliderHp.SetActive(true);
+        }
+        else
+        {
+           sliderHp.SetActive (false);
+        }    
     }
-
+    public void GetHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
     [Networked, OnChangedRender(nameof(OnSpeedChanged))]
    
     public float speed { get; set; }
@@ -37,7 +51,7 @@ public class PlayerProperties : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Monster"))
+        if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Boss"))
         {
             currentHealth -= 10;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -55,8 +69,6 @@ public class PlayerProperties : NetworkBehaviour
         currentHealth = maxHealth;
         textHealth.text = $"{currentHealth}/{maxHealth}";
     }
-
-
 
 
 

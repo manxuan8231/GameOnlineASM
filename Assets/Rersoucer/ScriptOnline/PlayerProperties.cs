@@ -32,22 +32,23 @@ public class PlayerProperties : NetworkBehaviour
         animator.SetFloat(speedHash, speed);
     }
 
-    
+
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("Monster"))
         {
             currentHealth -= 10;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             if (currentHealth <= 0)
             {
-               //destroy(GameObject) ko xai
-               networkRunner.Despawn(networkObject);
+                //destroy(GameObject) ko xai
+                networkRunner.Despawn(networkObject);
             }
         }
     }
+
     void Start()
     {
         maxHealth = 100;

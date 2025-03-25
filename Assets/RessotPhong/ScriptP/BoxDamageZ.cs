@@ -15,6 +15,7 @@ public class ZombieBoxDame : MonoBehaviour
                 playerHp.TakeDame(damage);
                 hasDealtDamage = true;
             }
+           
         }
     }
 

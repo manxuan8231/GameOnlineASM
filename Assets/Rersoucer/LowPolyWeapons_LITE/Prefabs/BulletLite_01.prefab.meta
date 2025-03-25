@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 745a87995944ab94caa447ec2061dbc4
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+labels:
+- FusionPrefab
 AssetOrigin:
   serializedVersion: 1
   productId: 245929
@@ -12,3 +9,8 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/LowPolyWeapons_LITE/Prefabs/BulletLite_01.prefab
   uploadId: 560060
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

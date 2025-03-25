@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 215955485830033677}
   - component: {fileID: 4286937119149952043}
   - component: {fileID: -5290519478610313069}
+  - component: {fileID: -7620558121364149828}
+  - component: {fileID: -6826617012887648095}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -144,8 +146,44 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8816379615262556758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35ffd56ff2c6b4e49be586fe4485af5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7620558121364149828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816379615262556758}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
+--- !u!114 &-6826617012887648095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8816379615262556758}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1783053959
+  ObjectInterest: 1
+  Flags: 1
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: -7620558121364149828}
+  ForceRemoteRenderTimeframe: 0

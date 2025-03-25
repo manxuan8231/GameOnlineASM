@@ -1,59 +1,62 @@
 ﻿using System.Collections;
-using Unity.Mathematics;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossController : MonoBehaviour
+public class BossController
+    : MonoBehaviour
 {
-    
-    public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death,Skill }
+    public enum EnemyState { Dancing, Combat, IdleCombat, Walk, Death, Skill }
     public EnemyState currentState;
+
     private Transform player;
     public float radius = 25f;
     public float rangeAttack = 2f;
+    public float rangeSkill = 5f;
+    public float cooldownSkill = 15f;
+
     public GameObject FloatingTargetPrefab;
-    [SerializeField] private string targetTag = "";
+    public GameObject skill;
+    public GameObject boxDamage;
+    public GameObject skillDameZone;
+
+    [SerializeField] private string targetTag = "Player";
     private NavMeshAgent agent;
     private Animator animator;
-    private bool hasDancing = false;
-    private bool isAttacking = false;
-    public float rangeSkill = 5f;
-
-    public float cooldownSkill = 15f;
-    public bool canUseSkill = true;
-    public int maxHealth = 200;
-    public int currentHealth;
-
     private AudioSource audioSource;
+
     public AudioClip dancingClip;
     public AudioClip combatClip;
     public AudioClip skillClip;
     public AudioClip deathClip;
-    public GameObject skill;
-    public GameObject boxDamage;
-    public GameObject skillDameZone;
+
+    public int maxHealth = 200;
+    public int currentHealth;
+
+    private bool hasDancing = false;
+    private bool isAttacking = false;
+    public bool canUseSkill = true;
+
     void Start()
     {
         skillDameZone.SetActive(false);
         boxDamage.SetActive(false);
         skill.SetActive(false);
+
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
         currentState = EnemyState.IdleCombat;
         currentHealth = maxHealth;
-        GameObject playerObject = GameObject.FindGameObjectWithTag(targetTag);
-        if (playerObject != null)
-            player = playerObject.transform;
-        else
-            Debug.LogError($"Không tìm thấy đối tượng nào có tag: {targetTag}");
     }
 
     void Update()
     {
         if (currentState == EnemyState.Death) return;
+
+        player = FindNearestPlayer();
         if (player == null) return;
-        if (audioSource == null) return;
 
         float distanceToTarget = Vector3.Distance(player.position, transform.position);
 
@@ -63,35 +66,27 @@ public class BossController : MonoBehaviour
             hasDancing = true;
             return;
         }
-       
+
         HandleState(distanceToTarget);
     }
-    IEnumerator showSKillRoutie()
+
+    Transform FindNearestPlayer()
     {
-        skill.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        skill.SetActive(false);
-    }
-    public void ShowSkill()
-    {
-        StartCoroutine(showSKillRoutie());
-    }
-    public void SkillSoundANMT()
-    {
-        if (currentState == EnemyState.Skill)
+        GameObject[] players = GameObject.FindGameObjectsWithTag(targetTag);
+        if (players.Length == 0) return null;
+
+        Transform nearest = null;
+        float minDistance = Mathf.Infinity;
+        foreach (var p in players)
         {
-            if (!audioSource.isPlaying)
+            float distance = Vector3.Distance(transform.position, p.transform.position);
+            if (distance < minDistance)
             {
-                audioSource.PlayOneShot(skillClip);
+                minDistance = distance;
+                nearest = p.transform;
             }
         }
-    }
-
-    IEnumerator DancingRoutine()
-    {
-        ChangeState(EnemyState.Dancing);
-        yield return new WaitForSeconds(7f); // Nhảy trong 7 giây
-        ChangeState(EnemyState.Walk);
+        return nearest;
     }
 
     void ChangeState(EnemyState newState)
@@ -99,11 +94,11 @@ public class BossController : MonoBehaviour
         if (currentState == newState) return;
 
         animator.ResetTrigger("Walk");
-        
         animator.ResetTrigger("Combat");
         animator.ResetTrigger("IdleCombat");
         animator.ResetTrigger("Dancing");
         animator.ResetTrigger("Skill");
+
         currentState = newState;
         animator.SetTrigger(newState.ToString());
     }
@@ -114,10 +109,7 @@ public class BossController : MonoBehaviour
         {
             case EnemyState.Dancing:
                 agent.isStopped = true;
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.PlayOneShot(dancingClip);
-                }
+                if (!audioSource.isPlaying) audioSource.PlayOneShot(dancingClip);
                 break;
 
             case EnemyState.IdleCombat:
@@ -129,68 +121,54 @@ public class BossController : MonoBehaviour
                 agent.speed = 3.5f;
                 agent.SetDestination(player.position);
 
-                // Khi vào rangeAttack -> Stop di chuyển & Attack
                 if (distanceToTarget <= rangeAttack)
                 {
-                    agent.isStopped = true; // Ngăn boss di chuyển khi tấn công
-                    agent.ResetPath(); // Dừng SetDestination
+                    agent.isStopped = true;
+                    agent.ResetPath();
                     StartCoroutine(AttackRoutine());
                 }
                 else if (distanceToTarget <= rangeSkill && canUseSkill)
                 {
-                    StartCoroutine(SkillRoutie());
+                    StartCoroutine(SkillRoutine());
                 }
                 break;
 
             case EnemyState.Combat:
                 agent.isStopped = true;
-                //if (!audioSource.isPlaying)
-                //{
-                //    audioSource.PlayOneShot(combatClip);
-                //}
-                // Nếu player chạy ra khỏi rangeAttack -> Chuyển về Walk
                 if (distanceToTarget > rangeAttack)
                 {
                     ChangeState(EnemyState.Walk);
                 }
                 break;
+
             case EnemyState.Skill:
                 agent.isStopped = false;
                 agent.stoppingDistance = rangeAttack;
-
                 break;
+
             case EnemyState.Death:
                 agent.isStopped = true;
                 Debug.Log("Death");
-
                 animator.SetTrigger("Death");
-                   
                 break;
-            
-           
         }
     }
-    public void combatSoundAnmt()
+
+    IEnumerator DancingRoutine()
     {
-        if(currentState == EnemyState.Combat)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(combatClip);
-            }
-        }
+        ChangeState(EnemyState.Dancing);
+        yield return new WaitForSeconds(7f);
+        ChangeState(EnemyState.Walk);
     }
 
     IEnumerator AttackRoutine()
     {
         isAttacking = true;
         ChangeState(EnemyState.Combat);
-        yield return new WaitForSeconds(1.5f); // Giả lập thời gian đánh
+        yield return new WaitForSeconds(1.5f);
         isAttacking = false;
 
         float distanceToTarget = Vector3.Distance(player.position, transform.position);
-
-        // Nếu player vẫn trong rangeAttack -> tiếp tục Combat
         if (distanceToTarget <= rangeAttack)
         {
             StartCoroutine(AttackRoutine());
@@ -200,48 +178,45 @@ public class BossController : MonoBehaviour
             ChangeState(EnemyState.Walk);
         }
     }
-        IEnumerator SkillRoutie()
+
+    IEnumerator SkillRoutine()
     {
-        canUseSkill = true;
+        canUseSkill = false;
         ChangeState(EnemyState.Skill);
         yield return new WaitForSeconds(3f);
         ChangeState(EnemyState.Walk);
         StartCoroutine(SkillCooldownRoutine());
     }
+
     IEnumerator SkillCooldownRoutine()
     {
         yield return new WaitForSeconds(cooldownSkill);
-        canUseSkill = true; 
+        canUseSkill = true;
     }
 
     public void TakeDamage(int damage)
     {
         if (currentState == EnemyState.Death) return;
+
         currentHealth -= damage;
         Debug.Log(currentHealth);
         Popup(damage);
-        
-    
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             ChangeState(EnemyState.Death);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(deathClip);
-            }
-            agent.enabled = false; // Vô hiệu hóa AI tránh lỗi
+            if (!audioSource.isPlaying) audioSource.PlayOneShot(deathClip);
+
+            agent.enabled = false;
             GetComponent<Collider>().enabled = false;
             Destroy(gameObject, 2f);
         }
-
     }
+
     public void Popup(float damage)
     {
-        // hiện popup
         var go = Instantiate(FloatingTargetPrefab, transform.position, Quaternion.identity, transform);
         go.GetComponent<TextMesh>().text = damage.ToString();
-        Debug.Log(damage);
     }
 
     private void OnDrawGizmosSelected()
@@ -258,6 +233,7 @@ public class BossController : MonoBehaviour
     {
         boxDamage.SetActive(true);
     }
+
     public void EndDame()
     {
         boxDamage.SetActive(false);
@@ -267,6 +243,7 @@ public class BossController : MonoBehaviour
     {
         skillDameZone.SetActive(true);
     }
+
     public void EndSkill()
     {
         skillDameZone.SetActive(false);

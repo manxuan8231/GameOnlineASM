@@ -1,3 +1,4 @@
+using Fusion;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class Even : MonoBehaviour
 
     public Transform[] spawnEnemy4;
     public GameObject enemy4;
+    public NetworkRunner networkRunner;
 
     private bool offspawn = true;
     private bool offspawn2 = true;
@@ -77,7 +79,7 @@ public class Even : MonoBehaviour
         textStep.enabled = false;
         foreach (var item in spawnEnemy)
         {
-             Instantiate(enemy, item.position, Quaternion.identity);
+             networkRunner.Spawn(enemy, item.position, Quaternion.identity);
         }
     }
     public IEnumerator SpawnEnemy2()
@@ -90,7 +92,7 @@ public class Even : MonoBehaviour
         textStep.enabled = false;
         foreach (var item in spawnEnemy2)
         {
-            Instantiate(enemy2, item.position, Quaternion.identity);
+            networkRunner.Spawn(enemy2, item.position, Quaternion.identity);
         }
     }
     public IEnumerator SpawnEnemy3()
@@ -103,7 +105,7 @@ public class Even : MonoBehaviour
         textStep.enabled = false;
         foreach (var item in spawnEnemy3)
         {
-            Instantiate(enemy3, item.position, Quaternion.identity);
+            networkRunner.Spawn(enemy3, item.position, Quaternion.identity);
         }
     }
     public IEnumerator SpawnEnemy4()
@@ -117,7 +119,7 @@ public class Even : MonoBehaviour
         textStep.enabled = false;
         foreach (var item in spawnEnemy4)
         {
-            Instantiate(enemy4, item.position, Quaternion.identity);
+            networkRunner.Spawn(enemy4, item.position, Quaternion.identity);
         }
     }
 }

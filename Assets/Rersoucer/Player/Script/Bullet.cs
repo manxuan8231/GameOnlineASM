@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Fusion;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     SliderZombie sliderZombie;
+   
     void Start()
     {
         

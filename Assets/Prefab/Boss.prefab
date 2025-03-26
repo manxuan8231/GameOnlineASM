@@ -36204,20 +36204,20 @@ MonoBehaviour:
   currentState: 0
   radius: 25
   rangeAttack: 2
-  FloatingTargetPrefab: {fileID: 5263825233000620200, guid: 7cf4962acc1cda44bbba8a86f6d4190d, type: 3}
-  targetTag: Player
   rangeSkill: 8.5
   cooldownSkill: 15
-  canUseSkill: 1
-  maxHealth: 200
-  currentHealth: 0
+  FloatingTargetPrefab: {fileID: 5263825233000620200, guid: 7cf4962acc1cda44bbba8a86f6d4190d, type: 3}
+  skill: {fileID: 8514540599839034291}
+  boxDamage: {fileID: 2672341339007442149}
+  skillDameZone: {fileID: 8717333596817622989}
+  targetTag: Player
   dancingClip: {fileID: 8300000, guid: 221705096889bb2479985e16c5cbf66b, type: 3}
   combatClip: {fileID: 8300000, guid: 5b434acea4d8f384986117e8155e473f, type: 3}
   skillClip: {fileID: 8300000, guid: 2ab15fc8978bc8f41b80b5e4cfdffd6d, type: 3}
   deathClip: {fileID: 8300000, guid: 542ba4718ed6e7d46a94f425997d400d, type: 3}
-  skill: {fileID: 8514540599839034291}
-  boxDamage: {fileID: 2672341339007442149}
-  skillDameZone: {fileID: 8717333596817622989}
+  maxHealth: 200000
+  currentHealth: 0
+  canUseSkill: 1
 --- !u!95 &6706962778551370717
 Animator:
   serializedVersion: 7

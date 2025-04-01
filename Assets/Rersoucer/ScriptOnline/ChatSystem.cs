@@ -15,8 +15,8 @@ public class ChatSystem : NetworkBehaviour
     //chạy sau khi nhân vật spawn ở trong mạng
     public override void Spawned()
     {
-      textMessage = GameObject.Find("TextMessenge").GetComponent<TextMeshProUGUI>();
-      InputFieldMessenge = GameObject.Find("InputFieldMessenge").GetComponent<TMP_InputField>();
+      textMessage = GameObject.Find("TextMessage").GetComponent<TextMeshProUGUI>();
+      InputFieldMessenge = GameObject.Find("InputFieldMessage").GetComponent<TMP_InputField>();
       buttonSend = GameObject.Find("ButtonSend");
       buttonSend.GetComponent<Button>().onClick.AddListener(SendMessengeChat);
     }

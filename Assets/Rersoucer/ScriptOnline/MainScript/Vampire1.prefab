@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 5070867233263988788}
   - component: {fileID: 974086927959543289}
   - component: {fileID: 6176113400911115128}
-  - component: {fileID: 4705447087806912615}
+  - component: {fileID: 4305666831432988884}
   m_Layer: 0
   m_Name: Vampire1
   m_TagString: Player
@@ -766,6 +766,7 @@ MonoBehaviour:
   - {fileID: 3184239185455823062}
   - {fileID: 5070867233263988788}
   - {fileID: 974086927959543289}
+  - {fileID: 4305666831432988884}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &7679381229358166445
 MonoBehaviour:
@@ -1049,7 +1050,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4705447087806912615
+--- !u!114 &4305666831432988884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1058,11 +1059,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 930492092862288966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1541381998, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: cfccdc841d33cb34caa048b8b4664aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Guid:
-    RawGuidValue: c1f79c3ebffb1ac439360bf1080c608d
+  textMessage: {fileID: 0}
+  InputFieldMessenge: {fileID: 0}
+  buttonSend: {fileID: 0}
 --- !u!1 &991809952267971185
 GameObject:
   m_ObjectHideFlags: 0

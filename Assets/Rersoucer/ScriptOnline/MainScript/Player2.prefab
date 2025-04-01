@@ -3922,6 +3922,7 @@ GameObject:
   - component: {fileID: 540007407141799582}
   - component: {fileID: 6192100021495723061}
   - component: {fileID: 7391826416862052364}
+  - component: {fileID: -4754886794271091433}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -3996,6 +3997,7 @@ MonoBehaviour:
   - {fileID: 1039717355832592939}
   - {fileID: 540007407141799582}
   - {fileID: 6192100021495723061}
+  - {fileID: -4754886794271091433}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &640447141381341896
 MonoBehaviour:
@@ -4269,6 +4271,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4754886794271091433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243693416856745793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfccdc841d33cb34caa048b8b4664aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMessage: {fileID: 0}
+  InputFieldMessenge: {fileID: 0}
+  buttonSend: {fileID: 0}
 --- !u!1 &8264580547720119922
 GameObject:
   m_ObjectHideFlags: 0

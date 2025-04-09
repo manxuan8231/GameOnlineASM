@@ -119121,15 +119121,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0.63, y: 1.32, z: -1.59}
+  ShoulderOffset: {x: -0.03, y: 1.01, z: 1.97}
   VerticalArmLength: 0.4
   CameraSide: 1
-  CameraDistance: 1.62
+  CameraDistance: 2
   AvoidObstacles:
-    Enabled: 0
+    Enabled: 1
     CollisionFilter:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 32
     IgnoreTag: 
     CameraRadius: 0.2
     DampingIntoCollision: 0

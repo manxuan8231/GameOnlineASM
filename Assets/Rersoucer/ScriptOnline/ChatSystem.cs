@@ -21,16 +21,15 @@ public class ChatSystem : NetworkBehaviour
       buttonSend.GetComponent<Button>().onClick.AddListener(SendMessengeChat);
     
       canvasChat = GameObject.FindGameObjectWithTag("CanvasChat");
-      
+        canvasChat.SetActive(false);
 
 
     }
 
     public override void FixedUpdateNetwork()
     {
-        //kiểm tra người dùng nhấn phím Tab thì mở chat nhấn thêm lần nữa thì tắt chat và nếu như người dùng nào nhấn 
-        //tab thì mới mở chat còn nếu không chỉ ẩn ở mạng của mình
-        if (!Object.HasStateAuthority) return; //chỉ cho phép người chơi có quyền điều khiển nhân vật mới có thể mở chat
+        //kiểm tra người dùng nhấn phím Tab thì mở chat
+        base.FixedUpdateNetwork();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             canvasChat.SetActive(!canvasChat.activeSelf);
@@ -43,9 +42,6 @@ public class ChatSystem : NetworkBehaviour
                 InputFieldMessenge.DeactivateInputField();
             }
         }
-
-
-
     }
     public void SendMessengeChat()
     {

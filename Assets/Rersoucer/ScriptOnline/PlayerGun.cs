@@ -14,7 +14,7 @@ public class PlayerGun : NetworkBehaviour
 
     // Biến tổng số đạn và đạn hiện tại
     [SerializeField] private int maxAmmo = 45;
-    private int currentAmmo;
+    public int currentAmmo;
 
     // UI để hiển thị số lượng đạn
     public TextMeshProUGUI ammoText;
@@ -65,7 +65,7 @@ public class PlayerGun : NetworkBehaviour
             // Tạo viên đạn và hướng bắn
             var bullet = networkRunner.Spawn(bulletPrefab, firePoint.position, firePoint.rotation);
             Vector3 direction = (target.transform.position - firePoint.position).normalized;
-            bullet.GetComponent<Rigidbody>().AddForce(direction * 50f, ForceMode.Impulse);
+            bullet.GetComponent<Rigidbody>().AddForce(direction * 200f, ForceMode.Impulse);
             
             // Giảm đạn và cập nhật UI
             currentAmmo--;

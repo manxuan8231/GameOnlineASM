@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -36,6 +37,7 @@ public class PlayerProperties : NetworkBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
+
     [Networked, OnChangedRender(nameof(OnSpeedChanged))]
    
     public float speed { get; set; }
@@ -46,9 +48,33 @@ public class PlayerProperties : NetworkBehaviour
         animator.SetFloat(speedHash, speed);
     }
 
+    [Networked, OnChangedRender(nameof(OnChangeName))]
+    public string Name { get; set; }
 
+    public TextMeshProUGUI nameText;
 
+    private void OnChangeName()
+    {
+        nameText.text = Name;
+    }
 
+    public override void Spawned()
+    {
+        base.Spawned();
+
+        // khởi tạo thông số cho người chơi
+        if (Object.HasStateAuthority)
+        {         
+            var name = PlayerPrefs.GetString("PlayerName", "Player");
+            RpcUpdateName(name);
+        }
+    }
+    // hàm này sẽ được gọi khi người chơi nhập tên
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RpcUpdateName(string name)
+    {
+        Name = name;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Boss"))

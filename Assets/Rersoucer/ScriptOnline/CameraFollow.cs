@@ -7,9 +7,9 @@ using Fusion;
 public class CameraFollow : MonoBehaviour
 {
     public CinemachineCamera FollowCamera;  // Tham chiếu đến CinemachineVirtualCamera
-    public float rotationSpeed = 150f;             // Tốc độ xoay camera
-    private Transform playerTransform;             // Tham chiếu đến transform của người chơi
-    private float verticalAngle = 0f;              // Góc xoay trục X
+    public float rotationSpeed = 150f;  // Tốc độ xoay camera
+    private Transform playerTransform; // Tham chiếu đến transform của người chơi
+    private float verticalAngle = 0f;  // Góc xoay trục X
 
     private void Start()
     {

@@ -1,18 +1,21 @@
 ﻿using Fusion;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     SliderZombie sliderZombie;
-   
-    void Start()
+    private float time = 0f;
+    public NetworkRunner runner;
+    public NetworkObject networkObject;
+
+    public override void FixedUpdateNetwork()
     {
-        
-    }
-    
-    void Update()
-    {
-        
+        time += Runner.DeltaTime;
+        if (time >= 2) {
+            if (runner != null && networkObject != null)
+                runner.Despawn(networkObject);
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -23,16 +26,31 @@ public class Bullet : MonoBehaviour
             if (sliderZombie != null)
             {
                 sliderZombie.TakeDamage(40);
-                Destroy(gameObject);
-            }                    
+
+            }
+            if (runner != null && networkObject != null)
+                runner.Despawn(networkObject);
         }
         else if (other.gameObject.CompareTag("Boss"))
         {
-            BossController boss = FindAnyObjectByType<BossController>();    
-            boss.TakeDamage(10);
-            Debug.Log("đã chạm");
-            Destroy(gameObject);
+            BossController boss = FindAnyObjectByType<BossController>();
+            if (sliderZombie != null)
+            {
+                boss.TakeDamage(10);
+                Debug.Log("đã chạm");
+            }
+            if (runner != null && networkObject != null)
+                runner.Despawn(networkObject);
         }
+        
     }
-    
+    private void Start()
+    {
+        if (networkObject == null)
+            networkObject = GetComponent<NetworkObject>();
+
+        if (runner == null)
+            runner = FindAnyObjectByType<NetworkRunner>();
+    }
+
 }

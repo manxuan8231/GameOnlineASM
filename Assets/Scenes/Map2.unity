@@ -12989,7 +12989,7 @@ GameObject:
   - component: {fileID: 290640828}
   - component: {fileID: 290640827}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasChat
   m_TagString: CanvasChat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63142,7 +63142,7 @@ GameObject:
   - component: {fileID: 1382759942}
   m_Layer: 0
   m_Name: Chat
-  m_TagString: Untagged
+  m_TagString: CanvasChat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

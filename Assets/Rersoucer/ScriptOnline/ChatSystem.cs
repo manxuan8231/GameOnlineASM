@@ -11,7 +11,7 @@ public class ChatSystem : NetworkBehaviour
     public TextMeshProUGUI textMessage;
     public TMP_InputField InputFieldMessenge;
     public GameObject buttonSend;
-
+    public GameObject canvasChat;
     //chạy sau khi nhân vật spawn ở trong mạng
     public override void Spawned()
     {
@@ -19,8 +19,30 @@ public class ChatSystem : NetworkBehaviour
       InputFieldMessenge = GameObject.Find("InputFieldMessage").GetComponent<TMP_InputField>();
       buttonSend = GameObject.Find("ButtonSend");
       buttonSend.GetComponent<Button>().onClick.AddListener(SendMessengeChat);
+    
+      canvasChat = GameObject.FindGameObjectWithTag("CanvasChat");
+        canvasChat.SetActive(false);
+
+
     }
 
+    public override void FixedUpdateNetwork()
+    {
+        //kiểm tra người dùng nhấn phím Tab thì mở chat
+        base.FixedUpdateNetwork();
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            canvasChat.SetActive(!canvasChat.activeSelf);
+            if (canvasChat.activeSelf)
+            {
+                InputFieldMessenge.ActivateInputField();
+            }
+            else
+            {
+                InputFieldMessenge.DeactivateInputField();
+            }
+        }
+    }
     public void SendMessengeChat()
     {
         var messenge = InputFieldMessenge.text;

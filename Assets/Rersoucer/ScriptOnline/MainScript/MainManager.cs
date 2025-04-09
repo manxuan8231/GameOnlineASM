@@ -123,6 +123,13 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
             (re, obj) =>
             {
                 Debug.Log("Spawn player:"+obj);
+
+                PlayerSetup playerSetup = obj.GetComponent<PlayerSetup>();
+                if (playerSetup != null)
+                {
+                    playerSetup.SetupCamera();
+                    playerSetup.SetupPlayer();
+                }
             });
     }
 

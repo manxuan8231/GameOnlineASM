@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5290519478610313069}
   - component: {fileID: -7620558121364149828}
   - component: {fileID: -6826617012887648095}
-  - component: {fileID: 3442013426465439211}
+  - component: {fileID: -4724449955409676067}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: -5290519478610313069}
   - {fileID: -7620558121364149828}
   ForceRemoteRenderTimeframe: 0
---- !u!82 &3442013426465439211
+--- !u!82 &-4724449955409676067
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +213,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 1.01
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -248,7 +248,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.513
       inSlope: 0
       outSlope: 0
       tangentMode: 0

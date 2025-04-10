@@ -119090,7 +119090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowCamera: {fileID: 7148806309449929819}
-  rotationSpeed: 240
+  rotationSpeed: 150
 --- !u!114 &8751951200023145572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119121,15 +119121,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: -0.03, y: 1.01, z: 1.97}
+  ShoulderOffset: {x: -0.02, y: 1.04, z: 2.01}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 2
   AvoidObstacles:
-    Enabled: 1
+    Enabled: 0
     CollisionFilter:
       serializedVersion: 2
-      m_Bits: 32
+      m_Bits: 1
     IgnoreTag: 
     CameraRadius: 0.2
     DampingIntoCollision: 0

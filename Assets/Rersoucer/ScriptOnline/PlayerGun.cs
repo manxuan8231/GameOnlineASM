@@ -5,51 +5,48 @@ using UnityEngine;
 
 public class PlayerGun : NetworkBehaviour
 {
-    // Đối tượng đạn và điểm bắn
     public GameObject bulletPrefab;
     public Transform firePoint;
-
-    // Tham chiếu đến NetworkRunner
     public NetworkRunner networkRunner;
 
-    // Biến tổng số đạn và đạn hiện tại
     [SerializeField] private int maxAmmo = 45;
     public int currentAmmo;
 
-    // UI để hiển thị số lượng đạn
     public TextMeshProUGUI ammoText;
     public GameObject imgBullet;
 
-    // Thời gian gài đạn
     public float reloadTime = 2f;
+    public float fireRate = 0.2f; // Khoảng thời gian giữa mỗi phát bắn (bắn nhanh/slower)
+
     private bool isReloading = false;
+    private float nextFireTime = 0f;
 
     private void Start()
     {
         if (!Object.HasInputAuthority)
         {
             if (ammoText != null)
-                ammoText.enabled = false; // Ẩn UI với người chơi khác
+                ammoText.enabled = false;
             return;
         }
 
-        // Khởi tạo số đạn
         currentAmmo = maxAmmo;
         UpdateAmmoText();
     }
 
     private void Update()
     {
-        // Nếu không phải người chơi sở hữu, không xử lý
         if (!Object.HasInputAuthority || isReloading) return;
 
-        // Bắn khi nhấn chuột hoặc phím F
-        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Q)) && currentAmmo > 0)
+        // Giữ chuột trái hoặc phím Q để bắn liên tục
+        if ((Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Q)) && Time.time >= nextFireTime && currentAmmo > 0)
         {
+            nextFireTime = Time.time + fireRate;
             Shoot();
         }
+
         // Gài đạn khi nhấn R
-        else if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
         {
             StartCoroutine(Reload());
         }
@@ -57,21 +54,17 @@ public class PlayerGun : NetworkBehaviour
 
     private void Shoot()
     {
-        // Tìm mục tiêu có tag "Tam"
         GameObject target = GameObject.FindGameObjectWithTag("Tam");
 
         if (target != null && networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
         {
-            // Tạo viên đạn và hướng bắn
             var bullet = networkRunner.Spawn(bulletPrefab, firePoint.position, firePoint.rotation);
             Vector3 direction = (target.transform.position - firePoint.position).normalized;
             bullet.GetComponent<Rigidbody>().AddForce(direction * 200f, ForceMode.Impulse);
-            
-            // Giảm đạn và cập nhật UI
+
             currentAmmo--;
             UpdateAmmoText();
 
-            // Kiểm tra hết đạn và tự động gài lại
             if (currentAmmo <= 0)
             {
                 StartCoroutine(Reload());
@@ -81,11 +74,12 @@ public class PlayerGun : NetworkBehaviour
 
     private IEnumerator Reload()
     {
-        if (isReloading) yield break;  // Đang gài đạn thì không làm gì 
-        isReloading = true;
-        ammoText.text = $"{currentAmmo}/45..."; // Hiển thị trạng thái gài đạn
+        if (isReloading) yield break;
 
-        yield return new WaitForSeconds(reloadTime);  // Chờ trong thời gian gài đạn
+        isReloading = true;
+        ammoText.text = $"{currentAmmo}/{maxAmmo}...";
+
+        yield return new WaitForSeconds(reloadTime);
 
         currentAmmo = maxAmmo;
         UpdateAmmoText();
@@ -97,13 +91,12 @@ public class PlayerGun : NetworkBehaviour
     {
         if (ammoText != null && Object.HasInputAuthority)
         {
-            // Cập nhật hiển thị số đạn
             ammoText.text = $"{currentAmmo}/{maxAmmo}";
-            imgBullet.SetActive(true);
+            imgBullet?.SetActive(true);
         }
         else
         {
-            imgBullet.SetActive(false);
+            imgBullet?.SetActive(false);
         }
     }
 }

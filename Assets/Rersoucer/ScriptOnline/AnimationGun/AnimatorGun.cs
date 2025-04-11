@@ -10,6 +10,8 @@ public class AnimatorGun : NetworkBehaviour
    private bool fireAnimator {  get; set; }
    
     public Animator animator;
+
+    public GameObject effect;
     void OnFireChanged() 
     {
       animator.SetBool("Fire",fireAnimator);       
@@ -25,24 +27,29 @@ public class AnimatorGun : NetworkBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     fireAnimator = true;
+                    effect.SetActive(true);
                 }
                 else
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
                     fireAnimator = false;
+                    effect.SetActive(false);
                 }
                 else if (Input.GetKey(KeyCode.Q))
                 {
                     fireAnimator = true;
+                    effect.SetActive(true);
                 }
                 else if (Input.GetKeyUp(KeyCode.Q))
                 {
                     fireAnimator = false;
+                    effect.SetActive(false);
                 }
             }
             else
             {
                 fireAnimator = false;
+                effect.SetActive(false);
             }
         }
     }

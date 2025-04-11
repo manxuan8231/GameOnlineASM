@@ -26,6 +26,6 @@ public class SelectionManager : MonoBehaviour
         PlayerPrefs.SetString("PlayerName",playerName);
         PlayerPrefs.SetString("PlayerClass", playerClass);
         //loadscene
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Map2");
     }
 }

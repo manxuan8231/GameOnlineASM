@@ -228,7 +228,23 @@ public class BossController
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, rangeSkill);
     }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            currentHealth -= 100;
+            Debug.Log(currentHealth);
+            if (currentHealth <= 0)
+            {
+                ChangeState(EnemyState.Death);
+                if (!audioSource.isPlaying) audioSource.PlayOneShot(deathClip);
 
+                agent.enabled = false;
+                GetComponent<Collider>().enabled = false;
+                Destroy(gameObject, 2f);
+            }
+        }
+    }
     public void StartDame()
     {
         boxDamage.SetActive(true);

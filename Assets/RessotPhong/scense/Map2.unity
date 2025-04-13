@@ -55457,6 +55457,7 @@ MonoBehaviour:
     RawGuidValue: 367ad50c8cd35e24996b2a66bc536166
   _runner: {fileID: 0}
   _sceneManager: {fileID: 0}
+  EnemyPrefabRefs: []
 --- !u!4 &680556342
 Transform:
   m_ObjectHideFlags: 0

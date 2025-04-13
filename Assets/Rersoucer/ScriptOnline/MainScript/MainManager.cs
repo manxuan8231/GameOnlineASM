@@ -10,14 +10,13 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
 {
     public NetworkPrefabRef _character1PlayerPrefab;
     public NetworkPrefabRef _character2PlayerPrefab;
-
     public NetworkRunner _runner;
     public NetworkSceneManagerDefault _sceneManager;
-
+    public BossController _bossController;
     //khởi tạo các biến
     void Awake()
     {
-        if(_runner == null)
+        if (_runner == null)
         {
             GameObject runnerObj = new GameObject("NetworkRunner");
             _runner = runnerObj.AddComponent<NetworkRunner>();
@@ -43,7 +42,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         };
         //kết nối mạng vào Fusion
         var result = await _runner.StartGame(startGameArgs);
-        if (result.Ok) 
+        if (result.Ok)
         {
             Debug.Log("Connected to fussion network successfully!");
         }
@@ -53,7 +52,41 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         }
     }
 
+    private void Start()
+    {
+        InvokeRepeating(nameof(SpawnEnemy), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
+        _bossController = FindAnyObjectByType<BossController>();
+    }
+    public NetworkPrefabRef[] BossPrefabRefs;
+    private bool hasSpawned = false;
+    private NetworkObject _spawnBoss;
 
+    public void SpawnEnemy()
+    {
+        if (hasSpawned) return; // Nếu đã spawn thì không làm gì cả
+        var enemyPrefab = BossPrefabRefs[UnityEngine.Random.Range(0, BossPrefabRefs.Length)];
+        //var position = new Vector3(UnityEngine.Random.Range(-10, 10), 1, UnityEngine.Random.Range(-10, 10));
+        var position = new Vector3(311.1645f, 1.9959f, 454.6541f);
+        var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
+
+        _runner.Spawn(enemyPrefab, position, rotation, null, (runner, obj) =>
+        {
+            Debug.Log("Spawned enemy: " + obj.Id);
+        });
+        hasSpawned = true; // Đánh dấu đã spawn
+        if (_bossController.currentHealth < 0)
+        {
+            DeSpawnBoss();
+        }
+    }
+    void DeSpawnBoss()
+    {
+        if (_spawnBoss != null)
+        {
+         _runner.Despawn(_spawnBoss);
+            
+        }
+    }
     public void OnConnectedToServer(NetworkRunner runner)
     {
         

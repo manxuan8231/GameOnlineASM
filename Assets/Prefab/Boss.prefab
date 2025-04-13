@@ -36162,6 +36162,7 @@ GameObject:
   - component: {fileID: 637313975695431618}
   - component: {fileID: 5441983819904333833}
   - component: {fileID: -3014329846365887684}
+  - component: {fileID: 862602702192541029}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -36177,8 +36178,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7245230345968338876}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: 0, z: 3.12}
+  m_LocalRotation: {x: -0, y: 0.99963605, z: -0, w: 0.026978904}
+  m_LocalPosition: {x: -5.3805275, y: 0, z: 207.93106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36188,7 +36189,7 @@ Transform:
   - {fileID: 6773125169717448773}
   - {fileID: 2998417558346250151}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 176.908, z: 0}
 --- !u!114 &1928639981751217179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36215,7 +36216,7 @@ MonoBehaviour:
   combatClip: {fileID: 8300000, guid: 5b434acea4d8f384986117e8155e473f, type: 3}
   skillClip: {fileID: 8300000, guid: 2ab15fc8978bc8f41b80b5e4cfdffd6d, type: 3}
   deathClip: {fileID: 8300000, guid: 542ba4718ed6e7d46a94f425997d400d, type: 3}
-  maxHealth: 200000
+  maxHealth: 1000
   currentHealth: 0
   canUseSkill: 1
 --- !u!95 &6706962778551370717
@@ -36396,8 +36397,26 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 862602702192541029}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &862602702192541029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245230345968338876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7391711233589129263
 GameObject:
   m_ObjectHideFlags: 0

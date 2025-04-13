@@ -94,16 +94,20 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     //Spawn zombie
     public NetworkPrefabRef ZombiePrefab;
     private bool hassSpawned = false;
-    private NetworkObject _spawnZombie;
-    public Transform positionZombie;
+    private List<NetworkObject> _spawnZombie = new List<NetworkObject>();
+    public List<Transform> positionZombie;
     public void SpawnZombie()
     {
         if (hassSpawned) return; // Nếu đã spawn thì không làm gì cả
         Quaternion rotation = Quaternion.Euler(0, 180, 0);
-        _runner.Spawn(ZombiePrefab, positionZombie.position, rotation, null, (runner, obj) =>
+        foreach (Transform spawnPoint in positionZombie)
         {
-            Debug.Log("Spawned Zombie: " + obj.Id);
-        });
+            _runner.Spawn(ZombiePrefab, spawnPoint.position, rotation, null, (runner, obj) =>
+            {
+                Debug.Log("Spawned Zombie: " + obj.Id);
+                _spawnZombie.Add(obj);
+            });
+        }
         hassSpawned = true; // Đánh dấu đã spawn
         if (_bossController.currentHealth < 0)
         {
@@ -112,11 +116,12 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     }
     void DeSpawnZom()
     {
-        if (_spawnZombie != null)
+        foreach (var zombie in _spawnZombie)
         {
-            _runner.Despawn(_spawnZombie);
-
+            if (zombie != null)
+                _runner.Despawn(zombie);
         }
+        _spawnZombie.Clear();
     }
 
 

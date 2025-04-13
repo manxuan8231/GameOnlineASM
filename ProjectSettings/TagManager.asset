@@ -12,6 +12,7 @@ TagManager:
   - cameraTarget
   - Tam
   - CanvasChat
+  - Tam2
   layers:
   - Default
   - TransparentFX

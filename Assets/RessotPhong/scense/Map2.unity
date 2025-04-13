@@ -175695,6 +175695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowCamera: {fileID: 1959813560}
   rotationSpeed: 150
+  verticalLimit: 80
 --- !u!114 &1959813559
 MonoBehaviour:
   m_ObjectHideFlags: 0

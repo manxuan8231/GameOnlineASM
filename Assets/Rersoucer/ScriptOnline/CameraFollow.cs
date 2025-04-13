@@ -2,62 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
-using Fusion;
 
 public class CameraFollow : MonoBehaviour
 {
-    public CinemachineCamera FollowCamera;  // Tham chiếu đến CinemachineVirtualCamera
-    public float rotationSpeed = 150f;  // Tốc độ xoay camera
-    private Transform playerTransform; // Tham chiếu đến transform của người chơi
-    private float verticalAngle = 0f;  // Góc xoay trục X
+    public CinemachineCamera FollowCamera; // Camera chính
+    public float rotationSpeed = 150f;     // Tốc độ xoay
+    public float verticalLimit = 80f;      // Giới hạn góc xoay lên xuống
+
+    private Transform playerTransform;     // Thân player để xoay ngang
+    private Transform cameraPivot;         // Điểm để xoay lên xuống
+    private float verticalAngle = 0f;      // Góc xoay dọc
 
     private void Start()
     {
-        // Ẩn con trỏ chuột khi bắt đầu
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public void AssignCamera(Transform target)
+    public void AssignCamera(Transform player)
     {
-        if (FollowCamera != null && target != null)
-        {
-            // Gán mục tiêu theo dõi cho camera
-            FollowCamera.LookAt = target;
-            FollowCamera.Follow = target;
-            playerTransform = target;
-        }
+        playerTransform = player;
+
+        // Tạo pivot gắn vào đầu player
+        cameraPivot = new GameObject("CameraPivot").transform;
+        cameraPivot.SetParent(playerTransform);
+        cameraPivot.localPosition = new Vector3(0, 1.6f, 0f); // cao khoảng đầu người
+
+        // Gán camera vào pivot
+        FollowCamera.transform.SetParent(cameraPivot);
+        FollowCamera.transform.localPosition = Vector3.zero;
+        FollowCamera.transform.localRotation = Quaternion.identity;
+
+        FollowCamera.Follow = cameraPivot;
+        FollowCamera.LookAt = cameraPivot;
     }
 
     private void LateUpdate()
     {
-        if (playerTransform != null)
-        {
-            // Lấy input chuột
-            float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        if (playerTransform == null || cameraPivot == null) return;
 
-            // Xoay camera quanh đối tượng theo trục Y
-            playerTransform.Rotate(Vector3.up, mouseX);
+        // Xoay ngang (player thân người)
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        playerTransform.Rotate(Vector3.up, mouseX);
 
-            // Xoay camera quanh trục X với góc giới hạn
-            verticalAngle = Mathf.Clamp(verticalAngle, -80f, 80f);
+        // Xoay dọc (chỉ camera pivot)
+        float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+        verticalAngle -= mouseY;
+        verticalAngle = Mathf.Clamp(verticalAngle, -verticalLimit, verticalLimit);
+        cameraPivot.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
 
-            FollowCamera.transform.localRotation = Quaternion.Euler(verticalAngle, 0f, 0f);
-        }
-
-        // Ẩn hoặc hiện con trỏ chuột khi bấm L
+        // Toggle chuột
         if (Input.GetKeyDown(KeyCode.L))
         {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+            bool locked = Cursor.lockState == CursorLockMode.Locked;
+            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = !locked;
         }
     }
 }

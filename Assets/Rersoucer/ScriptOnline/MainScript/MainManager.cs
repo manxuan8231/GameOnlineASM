@@ -66,7 +66,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         if (hasSpawned) return; // Nếu đã spawn thì không làm gì cả
         var enemyPrefab = BossPrefabRefs[UnityEngine.Random.Range(0, BossPrefabRefs.Length)];
         //var position = new Vector3(UnityEngine.Random.Range(-10, 10), 1, UnityEngine.Random.Range(-10, 10));
-        var position = new Vector3(-902.7477f, -843.9089f, 211.4026f);
+        var position = new Vector3(-0.02F, 0.28f, 6.55f);
         var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
 
         _runner.Spawn(enemyPrefab, position, rotation, null, (runner, obj) =>

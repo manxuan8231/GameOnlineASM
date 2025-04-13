@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -37,6 +38,8 @@ public class BossController
     private bool isAttacking = false;
     public bool canUseSkill = true;
 
+    public CinemachineCamera cameraBos;
+
     void Start()
     {
         skillDameZone.SetActive(false);
@@ -49,6 +52,7 @@ public class BossController
 
         currentState = EnemyState.IdleCombat;
         currentHealth = maxHealth;
+
     }
 
     void Update()
@@ -157,7 +161,9 @@ public class BossController
     IEnumerator DancingRoutine()
     {
         ChangeState(EnemyState.Dancing);
+        cameraBos.Priority = 20;
         yield return new WaitForSeconds(7f);
+        cameraBos.Priority = 0;
         ChangeState(EnemyState.Walk);
     }
 
@@ -243,8 +249,11 @@ public class BossController
                 GetComponent<Collider>().enabled = false;
                 Destroy(gameObject, 2f);
             }
+           
         }
+
     }
+
     public void StartDame()
     {
         boxDamage.SetActive(true);

@@ -6,42 +6,74 @@ using UnityEngine.UI;
 public class Car : NetworkBehaviour
 {
     [Networked, OnChangedRender(nameof(OnRepairChanged))]
-
     public float countRepair { get; set; }
+
     public TextMeshProUGUI textRepair;
-    public GameObject buttonF;
+    public TextMeshProUGUI textButtonF;
+    public NetworkRunner networkRunner;
+    private bool isNearPlayer = false;
+    private Transform TransformCar;
+    
+
     public void OnRepairChanged()
     {
-        textRepair.text = $"{countRepair}/{4}";
+        textRepair.text = $"{countRepair}%";
     }
-    public void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        
+        if (!Object.HasInputAuthority) return;
+
+        if (isNearPlayer)
         {
-            buttonF.SetActive(true);
-            PlayerProperties playerProperties = FindAnyObjectByType<PlayerProperties>();
-            if (Input.GetKeyDown(KeyCode.F) && playerProperties.countRepair > 0)
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                countRepair += 1;
-                textRepair.text = $"{countRepair}/{4}";
-                countRepair = Mathf.Clamp(countRepair, 0, 4);
+                // Gửi RPC tới host để tăng sửa
+                RPC_AddRepair();
             }
+        }
+    }
+    private void Spawn()
+    {
+        if (networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
+        {
+            TransformCar = GameObject.FindGameObjectWithTag("Car").transform;
+            var car = networkRunner.Spawn(gameObject, TransformCar.position, transform.rotation);
+            car.GetComponent<NetworkObject>().GetComponent<Car>().countRepair = 0;
         }
         else
         {
-            buttonF.SetActive(false);
+            textRepair.text = $"{countRepair}%";
+            textButtonF.enabled = false;
         }
     }
-    public override void Spawned()
+    public void OnTriggerEnter(Collider other)
     {
-        base.Spawned();
-        OnRepairChanged();
+        if (other.gameObject.CompareTag("Player") && other.GetComponent<NetworkObject>().HasInputAuthority)
+        {
+            isNearPlayer = true;
+            textButtonF.enabled = true;
+        }
+    }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && other.GetComponent<NetworkObject>().HasInputAuthority)
+        {
+            isNearPlayer = false;
+            textButtonF.enabled = false;
+        }
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_AddRepair()
+    {
+        countRepair = Mathf.Clamp(countRepair + 1, 0, 100);
     }
     public void Start()
     {
-        countRepair = 0;
-        textRepair.text = $"{countRepair}/{4}";
-        buttonF.SetActive(false);
+        Spawn();
     }
 }
+

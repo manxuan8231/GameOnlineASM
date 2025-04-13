@@ -12,8 +12,10 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     public NetworkPrefabRef _character2PlayerPrefab;
     public NetworkRunner _runner;
     public NetworkSceneManagerDefault _sceneManager;
+
     public BossController _bossController;
     public ZombieAI _zombieAI;
+
     //khởi tạo các biến
     void Awake()
     {
@@ -60,7 +62,10 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
 
         InvokeRepeating(nameof(SpawnZombie), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
         _zombieAI = FindAnyObjectByType<ZombieAI>();
+
+        
     }
+
     public NetworkPrefabRef[] BossPrefabRefs;
     private bool hasSpawned = false;
     private NetworkObject _spawnBoss;
@@ -123,6 +128,8 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         }
         _spawnZombie.Clear();
     }
+
+    
 
 
     public void OnConnectedToServer(NetworkRunner runner)
@@ -206,6 +213,12 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
                 if (playerGun != null) 
                 { 
                    playerGun.networkRunner = runner;    
+                }
+
+                Car car = obj.GetComponent<Car>();
+                if (car != null)
+                {
+                    car.networkRunner = runner;
                 }
             });
     }

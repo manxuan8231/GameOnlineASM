@@ -14,6 +14,7 @@ TagManager:
   - CanvasChat
   - Tam2
   - Box
+  - Car
   layers:
   - Default
   - TransparentFX

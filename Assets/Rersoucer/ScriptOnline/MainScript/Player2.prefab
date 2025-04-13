@@ -4164,7 +4164,6 @@ GameObject:
   - component: {fileID: 6192100021495723061}
   - component: {fileID: 7391826416862052364}
   - component: {fileID: -4754886794271091433}
-  - component: {fileID: -6196851722545206126}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -4398,9 +4397,11 @@ MonoBehaviour:
   firePoint: {fileID: 886682976025472857}
   networkRunner: {fileID: 0}
   maxAmmo: 45
+  currentAmmo: 0
   ammoText: {fileID: 3776021465807654604}
   imgBullet: {fileID: 6469424180515494310}
   reloadTime: 2
+  fireRate: 0.2
 --- !u!114 &6192100021495723061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4531,20 +4532,6 @@ MonoBehaviour:
   InputFieldMessenge: {fileID: 0}
   buttonSend: {fileID: 0}
   canvasChat: {fileID: 0}
---- !u!114 &-6196851722545206126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8243693416856745793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1541381998, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Guid:
-    RawGuidValue: 367ad50c8cd35e24996b2a66bc536166
 --- !u!1 &8264580547720119922
 GameObject:
   m_ObjectHideFlags: 0

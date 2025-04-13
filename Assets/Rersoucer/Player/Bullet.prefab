@@ -105,7 +105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5960193676163978908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96d332ab3dbfaaf40bdd9745ff0b19f0, type: 3}
   m_Name: 
@@ -230,7 +230,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &4286937119149952043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runner: {fileID: 0}
   networkObject: {fileID: 0}
+  effectHit: {fileID: 2441387557689100275, guid: 19ac90b976612fc4391769548028212e, type: 3}
 --- !u!114 &-7620558121364149828
 MonoBehaviour:
   m_ObjectHideFlags: 0

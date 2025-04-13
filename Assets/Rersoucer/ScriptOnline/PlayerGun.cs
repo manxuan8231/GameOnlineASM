@@ -59,8 +59,8 @@ public class PlayerGun : NetworkBehaviour
         if (target != null && networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
         {
             var bullet = networkRunner.Spawn(bulletPrefab, firePoint.position, firePoint.rotation);
-            Vector3 direction = (target.transform.position - firePoint.position).normalized;
-            bullet.GetComponent<Rigidbody>().AddForce(direction * 200f, ForceMode.Impulse);
+            Vector3 direction = (target.transform.position - firePoint.position).normalized;// Tính toán hướng bắn
+            bullet.GetComponent<Rigidbody>().AddForce(direction * 120f, ForceMode.Impulse);
 
             currentAmmo--;
             UpdateAmmoText();

@@ -53,9 +53,18 @@ public class CameraFollow : MonoBehaviour
         // Toggle chuột bằng phím L
         if (Input.GetKeyDown(KeyCode.L))
         {
-            bool locked = Cursor.lockState == CursorLockMode.Locked;
-            Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = !locked;
+            // Kiểm tra trạng thái chuột hiện tại
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;  // Hiển thị chuột
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;  // Ẩn chuột
+            }
         }
+
     }
 }

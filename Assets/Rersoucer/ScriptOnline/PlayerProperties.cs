@@ -61,7 +61,7 @@ public class PlayerProperties : NetworkBehaviour
     public override void Spawned()
     {
         base.Spawned();
-
+        OnChangeName();
         // khởi tạo thông số cho người chơi
         if (Object.HasStateAuthority)
         {         

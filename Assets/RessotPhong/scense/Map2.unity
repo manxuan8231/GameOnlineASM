@@ -36139,9 +36139,13 @@ MonoBehaviour:
   _runner: {fileID: 0}
   _sceneManager: {fileID: 0}
   _bossController: {fileID: 0}
+  _zombieAI: {fileID: 0}
   BossPrefabRefs:
   - RawGuidValue: 259b8875e97fbe449885e2b1de155d01
   positionBoss: {fileID: 1473906924}
+  ZombiePrefab:
+    RawGuidValue: 43ef3bfce79b3f5459cd0729a182e97d
+  positionZombie: {fileID: 2092426374}
 --- !u!4 &680556342
 Transform:
   m_ObjectHideFlags: 0
@@ -84873,101 +84877,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000013149834228, guid: 6857ff1d3761e21479727f3b27cc8f68, type: 3}
   m_PrefabInstance: {fileID: 1581081888}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1581875962
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: SortKey
-      value: 1440677600
-      objectReference: {fileID: 0}
-    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1581875964}
-    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1581875963}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -38.714043
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.000005722046
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -153.1641
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-      propertyPath: m_Name
-      value: ShirtlessZombie_BodyParts_FREE
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
---- !u!114 &1581875963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -3988890130741719125, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-  m_PrefabInstance: {fileID: 1581875962}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1581875964 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7932519119873952660, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
-  m_PrefabInstance: {fileID: 1581875962}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f7eb776de378c43aab05c2a244c110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1582600742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110951,6 +110860,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000012973412514, guid: 7664aa771caa1ce42965283fa24dbbd2, type: 3}
   m_PrefabInstance: {fileID: 2090365539}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2092426373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092426374}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2092426374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092426373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.457485, y: 16.459436, z: -194.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2094846264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115164,4 +115104,4 @@ SceneRoots:
   - {fileID: 680556342}
   - {fileID: 1959813561}
   - {fileID: 525143165}
-  - {fileID: 1581875962}
+  - {fileID: 2092426374}

@@ -13,6 +13,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     public NetworkRunner _runner;
     public NetworkSceneManagerDefault _sceneManager;
     public BossController _bossController;
+    public ZombieAI _zombieAI;
     //khởi tạo các biến
     void Awake()
     {
@@ -56,6 +57,9 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     {
         InvokeRepeating(nameof(SpawnEnemy), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
         _bossController = FindAnyObjectByType<BossController>();
+
+        InvokeRepeating(nameof(SpawnZombie), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
+        _zombieAI = FindAnyObjectByType<ZombieAI>();
     }
     public NetworkPrefabRef[] BossPrefabRefs;
     private bool hasSpawned = false;
@@ -86,6 +90,36 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
             
         }
     }
+
+    //Spawn zombie
+    public NetworkPrefabRef ZombiePrefab;
+    private bool hassSpawned = false;
+    private NetworkObject _spawnZombie;
+    public Transform positionZombie;
+    public void SpawnZombie()
+    {
+        if (hassSpawned) return; // Nếu đã spawn thì không làm gì cả
+        Quaternion rotation = Quaternion.Euler(0, 180, 0);
+        _runner.Spawn(ZombiePrefab, positionZombie.position, rotation, null, (runner, obj) =>
+        {
+            Debug.Log("Spawned Zombie: " + obj.Id);
+        });
+        hassSpawned = true; // Đánh dấu đã spawn
+        if (_bossController.currentHealth < 0)
+        {
+            DeSpawnZom();
+        }
+    }
+    void DeSpawnZom()
+    {
+        if (_spawnZombie != null)
+        {
+            _runner.Despawn(_spawnZombie);
+
+        }
+    }
+
+
     public void OnConnectedToServer(NetworkRunner runner)
     {
         

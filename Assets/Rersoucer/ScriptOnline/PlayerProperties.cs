@@ -75,6 +75,23 @@ public class PlayerProperties : NetworkBehaviour
     {
         Name = name;
     }
+
+    [Networked, OnChangedRender(nameof(OnChangeRepair))]
+    public float countRepair { get; set; }
+    public TextMeshProUGUI textRepair;
+    public void OnChangeRepair()
+    {
+        if (Object.HasInputAuthority)
+        {
+            textRepair.enabled = true;
+            textRepair.text = $"Repair: {countRepair}";
+            countRepair = Mathf.Clamp(countRepair, 0, 4);
+        }
+        else
+        {
+            textRepair.enabled = false;
+        }    
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Boss"))
@@ -87,13 +104,26 @@ public class PlayerProperties : NetworkBehaviour
                 networkRunner.Despawn(networkObject);
             }
         }
+        else if (other.gameObject.CompareTag("Box"))
+        {
+            if (Object.HasInputAuthority)
+            {
+                countRepair += 1;
+                textRepair.text = $"Repair: {countRepair}";
+                countRepair = Mathf.Clamp(countRepair, 0, 4);
+               
+                Destroy(other.gameObject);
+            }
+        }
     }
-
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
         textHealth.text = $"{currentHealth}/{maxHealth}";
+
+        countRepair = 0;
+        textRepair.text = $"Repair: {countRepair}";
     }
 
 

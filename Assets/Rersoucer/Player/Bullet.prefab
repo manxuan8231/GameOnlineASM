@@ -267,6 +267,7 @@ MonoBehaviour:
   runner: {fileID: 0}
   networkObject: {fileID: 0}
   effectHit: {fileID: 2441387557689100275, guid: 19ac90b976612fc4391769548028212e, type: 3}
+  shooter: {fileID: 0}
 --- !u!114 &-7620558121364149828
 MonoBehaviour:
   m_ObjectHideFlags: 0

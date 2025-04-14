@@ -9,6 +9,8 @@ public class Bullet : NetworkBehaviour
     public NetworkRunner runner;
     public NetworkObject networkObject;
     public GameObject effectHit;
+    public PlayerProperties shooter; // Ai bắn viên đạn
+
     public override void FixedUpdateNetwork()
     {
         time += Runner.DeltaTime;
@@ -25,7 +27,7 @@ public class Bullet : NetworkBehaviour
             sliderZombie = other.gameObject.GetComponent<SliderZombie>();
             if (sliderZombie != null)
             {
-                sliderZombie.TakeDamage(40);
+                sliderZombie.TakeDamage(40,shooter);
                 var effect = runner.Spawn(effectHit, transform.position, transform.rotation);
             }
             if (runner != null && networkObject != null)

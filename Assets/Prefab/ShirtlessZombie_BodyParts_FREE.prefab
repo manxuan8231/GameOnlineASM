@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f7eb776de378c43aab05c2a244c110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 20
+  detectionRadius: 100
   attackRange: 1.15
   attackCooldown: 2
   damage: 5
@@ -2599,6 +2599,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 7932519119873952660}
+  - {fileID: 1352598413875688969}
   - {fileID: -3988890130741719125}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-3988890130741719125

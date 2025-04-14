@@ -76,7 +76,28 @@ public class PlayerProperties : NetworkBehaviour
         Name = name;
     }
 
-   
+    [Networked, OnChangedRender(nameof(OnChangeKillEnemy))]
+     public int countEnemy { get; set; }
+    public TextMeshProUGUI textEnemy;
+    public GameObject panelEnemy;
+    public void OnChangeKillEnemy()
+    {
+        if (Object.HasInputAuthority)
+        {
+            panelEnemy.SetActive(true);
+            textEnemy.text = $"{countEnemy}";
+        }
+        else
+        {
+            panelEnemy.SetActive(false);
+        }
+    }
+    public void AddEnemyKill()
+    {
+        countEnemy += 1;
+        // Khi countEnemy thay đổi, OnChangeKillEnemy sẽ tự gọi
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Boss"))
@@ -97,7 +118,7 @@ public class PlayerProperties : NetworkBehaviour
         currentHealth = maxHealth;
         textHealth.text = $"{currentHealth}/{maxHealth}";
 
-     
+        textEnemy.text = $"{countEnemy}";
     }
 
 

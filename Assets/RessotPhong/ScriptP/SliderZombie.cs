@@ -1,6 +1,7 @@
+﻿using Fusion;
 using UnityEngine;
 
-public class SliderZombie : MonoBehaviour
+public class SliderZombie : NetworkBehaviour
 {
     public int CurrentHealth;
     public int MaxHealth = 100;
@@ -11,20 +12,22 @@ public class SliderZombie : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    
-    void Update()
-    {
-        
-    }
-    public void TakeDamage(int damage)
+
+    public void TakeDamage(int damage, PlayerProperties attacker)
     {
         CurrentHealth -= damage;
         animator.SetTrigger("Hit");
-        Debug.Log(CurrentHealth);
-        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-        if(CurrentHealth <= 0)
+
+        if (CurrentHealth <= 0)
         {
-            Destroy(gameObject);
+            if (attacker != null && attacker.Object.HasInputAuthority)
+            {
+                attacker.AddEnemyKill();
+            }
+
+            Runner.Despawn(Object);
         }
     }
+
+
 }

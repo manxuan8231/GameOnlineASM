@@ -17,11 +17,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 7a69f12127f2f4f4fb58d65ed066a362
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainStart.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/MAp2.unity
+    path: Assets/Scenes/Map2.unity
     guid: 40ef6e60490d68541971945758777f58
   - enabled: 0
     path: Assets/AlterunaFPS/Scenes/Menu.unity

@@ -21,7 +21,7 @@ public class ChatSystem : NetworkBehaviour
       buttonSend.GetComponent<Button>().onClick.AddListener(SendMessengeChat);
     
       canvasChat = GameObject.FindGameObjectWithTag("CanvasChat");
-        canvasChat.SetActive(false);
+
 
 
     }

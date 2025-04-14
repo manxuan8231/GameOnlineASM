@@ -187,6 +187,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     {
         Debug.Log("..PLayer join:" + player);
         if (_runner.LocalPlayer != player) return;
+        if (_spawnBoss) return;
         //thực hiện spawn nhân vật cho người chơi
         var playerClass = PlayerPrefs.GetString("PlayerClass");
         var playerName = PlayerPrefs.GetString("PlayerName");

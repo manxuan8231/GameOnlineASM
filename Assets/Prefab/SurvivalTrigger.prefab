@@ -126,8 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageText: {fileID: 6585803737192195187}
   timerText: {fileID: 6585803737192195187}
-  countdownTime: 10
-  networkRunner: {fileID: 0}
+  countdownTime: 300
   flyPo: {fileID: 0}
   flyPrefab: {fileID: 5524693378350878286, guid: 45cfb3073346c9743822091e5a4b8271, type: 3}
 --- !u!114 &-5186537581406731337

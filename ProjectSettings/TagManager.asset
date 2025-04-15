@@ -17,6 +17,7 @@ TagManager:
   - Car
   - Hp
   - Fly
+  - EnemyPoint
   layers:
   - Default
   - TransparentFX

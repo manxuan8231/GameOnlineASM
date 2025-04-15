@@ -25919,6 +25919,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011940550886, guid: 31fee1c2b8079524babddad687e95210, type: 3}
   m_PrefabInstance: {fileID: 523705855}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &524116764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 3234265196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 123.792114
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31207275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 139.49506
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &524116765 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 524116764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &525143164
 GameObject:
   m_ObjectHideFlags: 0
@@ -26218,6 +26284,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca33ebcd6009bea4e8fab1d5b1c34436, type: 3}
+--- !u!1001 &532137467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 1312749909
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 148.30298
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31207275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 160.84845
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &532137468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 532137467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &533133289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44267,6 +44399,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000010230679374, guid: fee6e1da33beae9409089ab8a832464f, type: 3}
   m_PrefabInstance: {fileID: 875295095}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &876223224
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 3970696767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 124.043945
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31207275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 108.44001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &876223225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 876223224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &876399063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45901,6 +46099,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1316552244}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1704011764}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 876223225}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524116765}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532137468}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1345337694}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2019196630}
+    - targetCorrespondingSourceObject: {fileID: 4268732271750166, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1048039343}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9108c30404dabe24898918a21fb3f6ec, type: 3}
 --- !u!1001 &927123252
@@ -51714,6 +51933,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011050751358, guid: ef77372ba45b400439d547071a884266, type: 3}
   m_PrefabInstance: {fileID: 1041801148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1048039342
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 3036773291
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 195.43604
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3120728
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 132.13046
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &1048039343 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 1048039342}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1048582172
 PrefabInstance:
@@ -66897,6 +67182,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013041734426, guid: d803e729730d97a4e89edf13b602b3f4, type: 3}
   m_PrefabInstance: {fileID: 1338115715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1345337693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 1605444607
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 164.39929
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31219482
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 154.19739
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &1345337694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 1345337693}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1345694259
 PrefabInstance:
@@ -83963,6 +84314,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4836639314595006, guid: b3b30da2af31dfe44b078040b1ed3e5e, type: 3}
   m_PrefabInstance: {fileID: 1703136863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1704011763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 740247019
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 122.696594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 74.01985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &1704011764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 1704011763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1705268662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97978,6 +98395,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011072209702, guid: b2be9b4ffc291194c96942bd60bdc25c, type: 3}
   m_PrefabInstance: {fileID: 2018556269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2019196629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1876234071}
+    m_Modifications:
+    - target: {fileID: -6715212629596161412, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: SortKey
+      value: 2636864330
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 168.2265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3121338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 130.96101
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049234051008758518, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+      propertyPath: m_Name
+      value: ShirtlessZombie_BodyParts_FREE (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+--- !u!4 &2019196630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3386328348555959442, guid: 43ef3bfce79b3f5459cd0729a182e97d, type: 3}
+  m_PrefabInstance: {fileID: 2019196629}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2019743400
 PrefabInstance:

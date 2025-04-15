@@ -463,7 +463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -326, y: 3}
+  m_AnchoredPosition: {x: 407, y: 3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1415532896062338364
@@ -1349,6 +1349,8 @@ MonoBehaviour:
   bossPo: {fileID: 0}
   networkRunner: {fileID: 0}
   isReloading: 0
+  enemyPoi: []
+  enemyPrefab: {fileID: 2824444660850013170, guid: 259b8875e97fbe449885e2b1de155d01, type: 3}
 --- !u!1 &991809952267971185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,7 +5608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327, y: -42.00003}
+  m_AnchoredPosition: {x: 52, y: -42.00003}
   m_SizeDelta: {x: 94.488, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5352643151822606516
@@ -5637,7 +5639,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kill: 0'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}

@@ -44,6 +44,16 @@ public class SpawnSurvival : NetworkBehaviour
     {
         if (networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
         {
+            // Lấy tất cả object có tag "EnemyPoint"
+            GameObject[] points = GameObject.FindGameObjectsWithTag("EnemyPoint");
+            enemyPoi = new Transform[points.Length];
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                enemyPoi[i] = points[i].transform;
+            }
+
+            // Spawn enemy tại mỗi điểm
             foreach (Transform enemyPo in enemyPoi)
             {
                 var enemy = networkRunner.Spawn(enemyPrefab, enemyPo.position, Quaternion.identity);

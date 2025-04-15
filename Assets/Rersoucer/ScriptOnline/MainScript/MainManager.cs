@@ -27,6 +27,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
             _sceneManager = runnerObj.AddComponent<NetworkSceneManagerDefault>();
         }
         ConnectToFusion();
+        
     }
     async void ConnectToFusion()
     {
@@ -55,24 +56,25 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    private void Start()
+     void Start()
     {
         InvokeRepeating(nameof(SpawnEnemy), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
-        _bossController = FindAnyObjectByType<BossController>();
-
+        
         InvokeRepeating(nameof(SpawnZombie), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
         _zombieAI = FindAnyObjectByType<ZombieAI>();
-
-        
+    }
+    void Update()
+    {
+        _bossController =  FindAnyObjectByType<BossController>();
     }
 
     public NetworkPrefabRef[] BossPrefabRefs;
-    private bool hasSpawned = false;
+    private bool hasSpawnedBoss = false;
     private NetworkObject _spawnBoss;
     public Transform positionBoss;
     public void SpawnEnemy()
     {
-        if (hasSpawned) return; // Nếu đã spawn thì không làm gì cả
+        if (hasSpawnedBoss) return; // Nếu đã spawn thì không làm gì cả
         var enemyPrefab = BossPrefabRefs[UnityEngine.Random.Range(0, BossPrefabRefs.Length)];
         //var position = new Vector3(UnityEngine.Random.Range(-10, 10), 1, UnityEngine.Random.Range(-10, 10));
         //var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
@@ -81,7 +83,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         {
             Debug.Log("Spawned enemy: " + obj.Id);
         });
-        hasSpawned = true; // Đánh dấu đã spawn
+        hasSpawnedBoss = true; // Đánh dấu đã spawn
         if (_bossController.currentHealth < 0)
         {
             DeSpawnBoss();
@@ -128,66 +130,52 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
         }
         _spawnZombie.Clear();
     }
-
-    
-
-
     public void OnConnectedToServer(NetworkRunner runner)
     {
         
     }
-
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
     {
         
     }
-
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
     {
         
     }
-
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
     {
         
     }
-
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
     {
         
     }
-
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
     {
         
     }
-
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         
     }
-
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
     {
         
     }
-
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
         
     }
-
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
         
     }
-
     //hàm này sẽ gọi khi kết nối mạng thành công
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         Debug.Log("..PLayer join:" + player);
         if (_runner.LocalPlayer != player) return;
-        if (_spawnBoss) return;
+        if (hasSpawnedBoss) return;
         //thực hiện spawn nhân vật cho người chơi
         var playerClass = PlayerPrefs.GetString("PlayerClass");
         var playerName = PlayerPrefs.GetString("PlayerName");

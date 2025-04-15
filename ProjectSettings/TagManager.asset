@@ -15,6 +15,7 @@ TagManager:
   - Tam2
   - Box
   - Car
+  - Hp
   layers:
   - Default
   - TransparentFX

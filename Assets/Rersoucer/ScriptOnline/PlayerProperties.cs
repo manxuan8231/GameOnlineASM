@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -110,6 +111,13 @@ public class PlayerProperties : NetworkBehaviour
                 networkRunner.Despawn(networkObject);
             }
         }
+        else if(other.gameObject.CompareTag("Hp"))
+        {
+            currentHealth += 40;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            
+        }
+       
        
     }
     void Start()

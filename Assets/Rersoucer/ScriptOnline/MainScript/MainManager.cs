@@ -13,7 +13,6 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     public NetworkRunner _runner;
     public NetworkSceneManagerDefault _sceneManager;
 
-    public BossController _bossController;
     public ZombieAI _zombieAI;
 
     //khởi tạo các biến
@@ -57,44 +56,13 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnEnemy), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
-        _bossController = FindAnyObjectByType<BossController>();
+       
 
         InvokeRepeating(nameof(SpawnZombie), 5, 5);//gọi hàm spawnEnemy sau 5 giây và lặp lại mỗi 5 giây
         _zombieAI = FindAnyObjectByType<ZombieAI>();
 
         
-    }
-
-    public NetworkPrefabRef[] BossPrefabRefs;
-    private bool hasSpawned = false;
-    private NetworkObject _spawnBoss;
-    public Transform positionBoss;
-    public void SpawnEnemy()
-    {
-        if (hasSpawned) return; // Nếu đã spawn thì không làm gì cả
-        var enemyPrefab = BossPrefabRefs[UnityEngine.Random.Range(0, BossPrefabRefs.Length)];
-        //var position = new Vector3(UnityEngine.Random.Range(-10, 10), 1, UnityEngine.Random.Range(-10, 10));
-        //var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
-        Quaternion rotation = Quaternion.Euler(0, 180, 0);
-        _runner.Spawn(enemyPrefab, positionBoss.position, rotation, null, (runner, obj) =>
-        {
-            Debug.Log("Spawned enemy: " + obj.Id);
-        });
-        hasSpawned = true; // Đánh dấu đã spawn
-        if (_bossController.currentHealth < 0)
-        {
-            DeSpawnBoss();
-        }
-    }
-    void DeSpawnBoss()
-    {
-        if (_spawnBoss != null)
-        {
-         _runner.Despawn(_spawnBoss);
-            
-        }
-    }
+    }  
 
     //Spawn zombie
     public NetworkPrefabRef ZombiePrefab;
@@ -114,22 +82,8 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
             });
         }
         hassSpawned = true; // Đánh dấu đã spawn
-        if (_bossController.currentHealth < 0)
-        {
-            DeSpawnZom();
-        }
+       
     }
-    void DeSpawnZom()
-    {
-        foreach (var zombie in _spawnZombie)
-        {
-            if (zombie != null)
-                _runner.Despawn(zombie);
-        }
-        _spawnZombie.Clear();
-    }
-
-    
 
 
     public void OnConnectedToServer(NetworkRunner runner)
@@ -187,7 +141,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
     {
         Debug.Log("..PLayer join:" + player);
         if (_runner.LocalPlayer != player) return;
-        if (_spawnBoss) return;
+       
         //thực hiện spawn nhân vật cho người chơi
         var playerClass = PlayerPrefs.GetString("PlayerClass");
         var playerName = PlayerPrefs.GetString("PlayerName");
@@ -216,11 +170,12 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
                    playerGun.networkRunner = runner;    
                 }
 
-                Car car = obj.GetComponent<Car>();
-                if (car != null)
+               SpawnSurvival spawnSurvival = obj.GetComponent<SpawnSurvival>();
+                if (spawnSurvival != null)
                 {
-                    car.networkRunner = runner;
+                    spawnSurvival.networkRunner = runner;
                 }
+               
             });
     }
 

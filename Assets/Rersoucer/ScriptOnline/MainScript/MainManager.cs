@@ -174,8 +174,7 @@ public class MainManager : NetworkBehaviour, INetworkRunnerCallbacks
                 if (spawnSurvival != null)
                 {
                     spawnSurvival.networkRunner = runner;
-                }
-               
+                }             
             });
     }
 

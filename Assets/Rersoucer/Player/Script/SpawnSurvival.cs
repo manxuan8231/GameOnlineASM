@@ -31,8 +31,8 @@ public class SpawnSurvival : NetworkBehaviour
             Vector3 firePoint = Vector3.zero; // Thay thế bằng vị trí thực tế của firePoint
             var sv = networkRunner.Spawn(bulletPrefab, firePoint, Quaternion.identity);
             bossPo = GameObject.FindGameObjectWithTag("Car").transform;
-            var boss = networkRunner.Spawn(bossSpawn, bossPo.position, Quaternion.Euler(0f, 180f, 0f)
-);
+            var boss = networkRunner.Spawn(bossSpawn, bossPo.position, Quaternion.Euler(0f, 180f, 0f));
+
         }
     }
 }

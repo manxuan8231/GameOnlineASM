@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f7eb776de378c43aab05c2a244c110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 100
+  detectionRadius: 300
   attackRange: 1.15
   attackCooldown: 2
   damage: 5
@@ -2579,7 +2579,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.60209703, y: 2.06, z: 0.5473188}
+  m_Size: {x: 0.83, y: 2.06, z: 0.76}
   m_Center: {x: 0.0035521984, y: 1.06, z: 0.0039494634}
 --- !u!114 &-6715212629596161412
 MonoBehaviour:

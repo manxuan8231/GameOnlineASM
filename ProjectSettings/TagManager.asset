@@ -16,6 +16,7 @@ TagManager:
   - Box
   - Car
   - Hp
+  - Fly
   layers:
   - Default
   - TransparentFX

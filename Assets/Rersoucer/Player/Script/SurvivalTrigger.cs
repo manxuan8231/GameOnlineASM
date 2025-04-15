@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using Fusion;
 
-public class SurvivalTrigger : MonoBehaviour
+public class SurvivalTrigger : NetworkBehaviour
 {
     public TextMeshProUGUI messageText;   // Text để hiển thị thông báo mục tiêu
     public TextMeshProUGUI timerText;     // Text để hiển thị thời gian đếm ngược
     public float countdownTime = 600f;    // 10 phút
     private bool timerStarted = false;
+   
 
+    public Transform flyPo;
+    public GameObject flyPrefab;
     void Start()
     {
         // Khi scene load, bắt đầu luôn
@@ -52,7 +56,12 @@ public class SurvivalTrigger : MonoBehaviour
 
     void OnTimerFinished()
     {
-        // TODO: Viết hành động bạn muốn ở đây khi hết giờ
-        Debug.Log(">> Hết thời gian! Thực hiện hành động sau sinh tồn.");
+        MainManager mainManager = FindAnyObjectByType<MainManager>();
+
+        if (mainManager._runner != null && mainManager._runner.LocalPlayer.IsRealPlayer)
+        {
+            flyPo = GameObject.FindGameObjectWithTag("Fly").transform;
+            var fly = mainManager._runner.Spawn(flyPrefab, flyPo.position, Quaternion.Euler(0, 90, 0));
+        }
     }
 }

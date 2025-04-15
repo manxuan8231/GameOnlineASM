@@ -60,7 +60,7 @@ public class PlayerGun : NetworkBehaviour
         {
             var bullet = networkRunner.Spawn(bulletPrefab, firePoint.position, firePoint.rotation);
 
-            // 👉 Gắn shooter vào viên đạn
+            //  Gắn shooter vào viên đạn
             var bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.shooter = GetComponent<PlayerProperties>();
 

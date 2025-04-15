@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 329807649}
   mainMenu: {fileID: 958798734}
-  sceneName: Map2
+  sceneName: Selection
 --- !u!1 &1630892369
 GameObject:
   m_ObjectHideFlags: 0

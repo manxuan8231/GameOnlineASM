@@ -9,8 +9,11 @@ public class SpawnSurvival : NetworkBehaviour
     public GameObject bossSpawn;
     public Transform bossPo;
     public NetworkRunner networkRunner;
-    
+
     public bool isReloading = false;
+
+    public Transform[] enemyPoi;
+    public GameObject enemyPrefab;
 
     private void Update()
     {
@@ -20,19 +23,31 @@ public class SpawnSurvival : NetworkBehaviour
         if (Input.GetKey(KeyCode.R) && !isReloading)
         {
             isReloading = true;
-            Shoot();
+            SpawnTextAndBoss();
+            SpawnEnemy();
         }       
     }
 
-    private void Shoot()
+    private void SpawnTextAndBoss()
     {
         if (networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
         {
-            Vector3 firePoint = Vector3.zero; // Thay thế bằng vị trí thực tế của firePoint
-            var sv = networkRunner.Spawn(bulletPrefab, firePoint, Quaternion.identity);
+            Vector3 firePoint = Vector3.zero; 
+            var sv = networkRunner.Spawn(bulletPrefab, firePoint, Quaternion.identity);//spawn text
+
             bossPo = GameObject.FindGameObjectWithTag("Car").transform;
             var boss = networkRunner.Spawn(bossSpawn, bossPo.position, Quaternion.Euler(0f, 180f, 0f));
 
+        }
+    }
+    private void SpawnEnemy()
+    {
+        if (networkRunner != null && networkRunner.LocalPlayer.IsRealPlayer)
+        {
+            foreach (Transform enemyPo in enemyPoi)
+            {
+                var enemy = networkRunner.Spawn(enemyPrefab, enemyPo.position, Quaternion.identity);
+            }
         }
     }
 }

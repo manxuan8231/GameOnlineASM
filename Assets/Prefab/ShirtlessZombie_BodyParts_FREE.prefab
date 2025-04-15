@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f7eb776de378c43aab05c2a244c110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 300
+  detectionRadius: 150
   attackRange: 1.15
   attackCooldown: 2
   damage: 5

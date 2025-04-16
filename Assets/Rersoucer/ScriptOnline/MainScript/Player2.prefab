@@ -4936,8 +4936,8 @@ MonoBehaviour:
   _Name: 
   nameText: {fileID: 7213334700578064829}
   _countEnemy: 0
-  textEnemy: {fileID: 3501502886341862283}
-  panelEnemy: {fileID: 264390108210556927}
+  textEnemy: {fileID: 0}
+  panelEnemy: {fileID: 0}
   _playerInfo:
     currentHealth: 0
     mana: 0

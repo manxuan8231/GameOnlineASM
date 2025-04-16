@@ -20421,7 +20421,6 @@ GameObject:
   - component: {fileID: 1205628408935548878}
   - component: {fileID: 8704157270019633377}
   - component: {fileID: 7985914184869697472}
-  - component: {fileID: 8108372065238249447}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -20476,7 +20475,7 @@ MonoBehaviour:
   combatClip: {fileID: 8300000, guid: 5b434acea4d8f384986117e8155e473f, type: 3}
   skillClip: {fileID: 8300000, guid: 2ab15fc8978bc8f41b80b5e4cfdffd6d, type: 3}
   deathClip: {fileID: 8300000, guid: 542ba4718ed6e7d46a94f425997d400d, type: 3}
-  maxHealth: 1000
+  maxHealth: 5000
   currentHealth: 0
   canUseSkill: 1
   cameraBos: {fileID: 3546635588126358266}
@@ -20678,20 +20677,6 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
---- !u!114 &8108372065238249447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2824444660850013170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1541381998, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Guid:
-    RawGuidValue: 259b8875e97fbe449885e2b1de155d01
 --- !u!1 &2896144385900675763
 GameObject:
   m_ObjectHideFlags: 0

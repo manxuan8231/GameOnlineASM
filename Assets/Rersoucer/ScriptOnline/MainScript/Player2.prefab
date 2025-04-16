@@ -1312,8 +1312,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2108,8 +2108,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4923,17 +4923,21 @@ MonoBehaviour:
   _currentHealth: 0
   textHealth: {fileID: 96338180284922919}
   healthSlider: {fileID: 5545360509035208990}
-  sliderHp: {fileID: 6182014518080882072}
+  sliderHp: {fileID: 3483966571326647372}
   networkObject: {fileID: 1377530011326123352}
   networkRunner: {fileID: 0}
+  _currentMana: 0
+  textMana: {fileID: 6438431739951724389}
+  manaSlider: {fileID: 6397308917373761149}
+  sliderMana: {fileID: 2103859250144773675}
   _speed: 0
   animator: {fileID: 3670316306818547423}
   speedHash: -823668238
   _Name: 
   nameText: {fileID: 7213334700578064829}
   _countEnemy: 0
-  textEnemy: {fileID: 0}
-  panelEnemy: {fileID: 0}
+  textEnemy: {fileID: 3501502886341862283}
+  panelEnemy: {fileID: 264390108210556927}
   _playerInfo:
     currentHealth: 0
     mana: 0

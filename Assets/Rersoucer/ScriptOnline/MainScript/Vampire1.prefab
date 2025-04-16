@@ -1117,9 +1117,13 @@ MonoBehaviour:
   _currentHealth: 0
   textHealth: {fileID: 3126772046835259185}
   healthSlider: {fileID: 6497554269708604435}
-  sliderHp: {fileID: 550821578343889257}
+  sliderHp: {fileID: 43003736568056354}
   networkObject: {fileID: 1730238522345708940}
   networkRunner: {fileID: 0}
+  _currentMana: 0
+  textMana: {fileID: 4513892032044505265}
+  manaSlider: {fileID: 1344254149462200316}
+  sliderMana: {fileID: 296309895758682246}
   _speed: 0
   animator: {fileID: 3234264542394872905}
   speedHash: -823668238

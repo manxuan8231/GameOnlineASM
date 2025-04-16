@@ -34,9 +34,35 @@ public class PlayerProperties : NetworkBehaviour
            sliderHp.SetActive (false);
         }    
     }
+
+    [Networked, OnChangedRender(nameof(OnManaChanged))]
+    public float currentMana { get; set; }
+    public float maxMana { get; set; }
+
+    public TextMeshProUGUI textMana;
+    public UnityEngine.UI.Slider manaSlider;
+    public GameObject sliderMana;
+
+    public void OnManaChanged()
+    {
+        if (Object.HasInputAuthority)
+        {
+            textMana.text = $"{currentMana}/{maxMana}";
+            manaSlider.value = currentMana;
+            sliderMana.SetActive(true);
+        }
+        else
+        {
+            sliderMana.SetActive(false);
+        }
+    }
     public void GetHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+    public void GetMana(float amount)
+    {
+        currentMana = Mathf.Clamp(currentMana - amount, 0, maxMana);
     }
 
     [Networked, OnChangedRender(nameof(OnSpeedChanged))]
@@ -115,7 +141,8 @@ public class PlayerProperties : NetworkBehaviour
         {
             currentHealth += 40;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            
+            currentMana += 40;
+            currentMana = Mathf.Clamp(currentMana, 0, maxMana);
         }
        
        
@@ -125,6 +152,9 @@ public class PlayerProperties : NetworkBehaviour
         maxHealth = 100;
         currentHealth = maxHealth;
         textHealth.text = $"{currentHealth}/{maxHealth}";
+        maxMana = 100;
+        currentMana = maxMana;
+        textMana.text = $"{currentMana}/{maxMana}";
 
         textEnemy.text = $"{countEnemy}";
     }

@@ -20,7 +20,7 @@ public class SpawnSurvival : NetworkBehaviour
         if (!Object.HasInputAuthority) return;
 
         // Giữ chuột trái hoặc phím Q để bắn liên tục
-        if (Input.GetKey(KeyCode.R) && !isReloading)
+        if (Input.GetKey(KeyCode.H) && !isReloading)
         {
             isReloading = true;
             SpawnTextAndBoss();

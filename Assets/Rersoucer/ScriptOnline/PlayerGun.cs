@@ -43,6 +43,11 @@ public class PlayerGun : NetworkBehaviour
         {
             nextFireTime = Time.time + fireRate;
             Shoot();
+            PlayerProperties playerProperties = FindAnyObjectByType<PlayerProperties>();
+            if (playerProperties != null)
+            {
+                playerProperties.GetMana(1);
+            }
         }
 
         // Gài đạn khi nhấn R

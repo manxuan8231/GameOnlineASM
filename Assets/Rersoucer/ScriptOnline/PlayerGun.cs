@@ -46,7 +46,7 @@ public class PlayerGun : NetworkBehaviour
             PlayerProperties playerProperties = FindAnyObjectByType<PlayerProperties>();
             if (playerProperties != null)
             {
-                playerProperties.GetMana(1);
+                playerProperties.UseMana(1);
             }
         }
 

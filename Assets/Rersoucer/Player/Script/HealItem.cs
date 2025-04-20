@@ -17,7 +17,7 @@ public class HealItem : MonoBehaviour
            /* HpSlider playerHp = other.GetComponent<HpSlider>();
             playerHp.heal(healAmout);*/
            PlayerProperties playerProperties = FindAnyObjectByType<PlayerProperties>();
-            playerProperties.GetHealth(30);
+            playerProperties.Heal(30);
             Debug.Log("Heal");
             Destroy(gameObject);
         }
